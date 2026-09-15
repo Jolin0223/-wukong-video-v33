@@ -8,7 +8,7 @@
 #lessonPanel::after{
   content:'';position:absolute;left:110px;right:325px;top:-30px;bottom:-20px;
   z-index:-1;pointer-events:none;border-radius:64px;
-  background:url('assets/images/v3/U01_learning_panel.png') center/112% 115% no-repeat;
+  background:url('assets/images/v3/U01_learning_panel.webp') center/112% 115% no-repeat;
 }
 .focus-scene{top:65px}
 .focus-weather{

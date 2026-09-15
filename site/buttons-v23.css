@@ -1,6 +1,6 @@
 /* Original generated artwork supplies the material; HTML text stays readable. */
 #stage button:where(.primary,.secondary,.small-btn,.mission-back,#undoStroke,#clearWriting){
- --button-art:url('assets/images/v23/button-ivory.png');
+ --button-art:url('assets/images/v23/button-ivory.webp');
  border:0!important;background-color:transparent!important;background-image:var(--button-art)!important;background-repeat:no-repeat!important;
  background-size:103% 150%!important;background-position:50% 55%!important;
  border-radius:9% / 28%!important;color:#194f4a!important;box-shadow:0 6px 7px #614c2426!important;
@@ -8,7 +8,7 @@
  isolation:isolate;
 }
 #stage button.primary{
- --button-art:url('assets/images/v23/button-jade.png');background-size:103% 143%!important;background-position:50% 48%!important;
+ --button-art:url('assets/images/v23/button-jade.webp');background-size:103% 143%!important;background-position:50% 48%!important;
  color:#fffdf0!important;text-shadow:0 2px 2px #075447;font-weight:700;
 }
 #stage button:where(.primary,.secondary,.small-btn,.mission-back,#undoStroke,#clearWriting):not(:disabled):hover{filter:brightness(1.055)}

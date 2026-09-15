@@ -10,7 +10,7 @@
  pointer-events:none;filter:drop-shadow(0 4px 3px #76592124);
 }
 #stage .aux-material>i{
- display:block;height:100%;background-image:url('assets/images/v23/button-ivory.png');
+ display:block;height:100%;background-image:url('assets/images/v23/button-ivory.webp');
  background-repeat:no-repeat;background-size:auto 152%;background-position-y:54%;
 }
 #stage .aux-material>i:first-child{

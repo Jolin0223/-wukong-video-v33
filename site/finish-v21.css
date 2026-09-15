@@ -1,6 +1,6 @@
 /* V21: image-led finish scene. Only four learning glyphs/pinyin and accessible controls are live. */
 #stage[data-phase="finish"] #learningPanelArt{display:none}
-#stage[data-phase="finish"] #finishPanel{left:0;top:0;width:1920px;height:1080px;background:url('assets/images/v21/finish-background.png') center/100% 100% no-repeat;border:0;border-radius:0;z-index:10}
+#stage[data-phase="finish"] #finishPanel{left:0;top:0;width:1920px;height:1080px;background:url('assets/images/v21/finish-background.webp') center/100% 100% no-repeat;border:0;border-radius:0;z-index:10}
 #stage[data-phase="finish"] #finishPanel::before{display:none}
 #finishPanel .finish-title,#finishPanel .finish-subtitle,#finishPanel .finish-summary>h3,#finishPanel .finish-copy,#finishPanel .finish-next{position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;clip-path:inset(50%)!important;overflow:hidden!important;white-space:nowrap!important}
 #finishPanel .finish-seal,#finishPanel .finish-companion::after{display:none}

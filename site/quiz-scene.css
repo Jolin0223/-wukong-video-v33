@@ -9,7 +9,7 @@
 .quiz-guide-label{position:absolute;left:10px;right:0;bottom:0;font:25px/1.3 LessonKai;text-align:center;padding:9px 12px;color:#4c755e;background:#eff0d5;border-radius:18px}
 .options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0;align-items:center;height:350px;perspective:1300px}
 .option,.option.correct,.option.wrong{position:relative;height:320px;min-height:0;padding:0;border:0;border-radius:36px;background:none;box-shadow:none;color:#345f4d;isolation:isolate;transition:filter .25s}
-.option::before{display:block;content:'';position:absolute;inset:0;background:url('assets/images/v3/P01_draggable_rock.png') center/115% 115% no-repeat;z-index:-2;border:0;border-radius:0;opacity:1;transition:filter .3s}
+.option::before{display:block;content:'';position:absolute;inset:0;background:url('assets/images/v3/P01_draggable_rock.webp') center/115% 115% no-repeat;z-index:-2;border:0;border-radius:0;opacity:1;transition:filter .3s}
 .option::after{content:'';position:absolute;left:17%;right:17%;bottom:12%;height:10%;background:#b6ae8755;filter:blur(12px);border-radius:50%;z-index:-3}
 .option .stone-number{position:absolute;top:29px;left:50%;transform:translateX(-50%);font:24px LessonRound;color:#9a7b43;background:#fff7dbe8;border:2px solid #e9ce88;width:45px;height:45px;border-radius:50%;display:grid;place-content:center;box-shadow:0 4px 10px #97763a15}
 .option .option-text{display:inline-flex;align-items:center;justify-content:center;flex-direction:column;gap:0;font:76px/1.13 LessonKai;padding:16px 16px 20px;min-width:180px;min-height:130px;max-width:95%;background:#fffbeeeb;box-shadow:0 3px 12px #8f977b15;border-radius:26px;position:relative;top:0}

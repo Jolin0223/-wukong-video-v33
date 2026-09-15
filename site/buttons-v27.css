@@ -1,6 +1,6 @@
 /* Auxiliary buttons keep the original ivory/gold artwork; text is placed directly on it. */
 #stage button:where(.secondary,.small-btn,.mission-back,#undoStroke,#clearWriting){
- --button-art:url('assets/images/v23/button-ivory.png');
+ --button-art:url('assets/images/v23/button-ivory.webp');
  background-color:transparent!important;
  background-image:var(--button-art)!important;
  background-size:104% 152%!important;

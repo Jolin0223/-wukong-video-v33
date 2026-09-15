@@ -1,6 +1,6 @@
 /* One material + directly rendered text, matching the jade primary. */
 #stage button:where(.secondary,.small-btn,.mission-back,#undoStroke,#clearWriting){
- --button-art:url('assets/images/v23/button-jade.png');
+ --button-art:url('assets/images/v23/button-jade.webp');
  background-color:transparent!important;background-image:var(--button-art)!important;
  background-size:103% 143%!important;background-position:50% 48%!important;
  color:#fffdf0!important;text-shadow:0 1px 2px #075447!important;border:0!important;

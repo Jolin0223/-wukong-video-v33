@@ -31,7 +31,7 @@
 @media(prefers-reduced-motion:reduce){#missionPanel *{animation:none!important;transition:none!important}}
 
 /* V17: physical cloud setting; the generated moving version will use this same frame. */
-#missionPanel{background:#fff1dd url('assets/images/v17/mission-cloud-master.png') center / cover no-repeat}
+#missionPanel{background:#fff1dd url('assets/images/v17/mission-cloud-master.webp') center / cover no-repeat}
 #missionPanel .mission-hero,#missionPanel .mission-cloud,#missionPanel .mission-star{display:none}
 #missionPanel .mission-heading{left:820px;right:150px;top:90px;text-align:left}
 #missionPanel .mission-heading h1{font-size:68px;letter-spacing:1px;white-space:nowrap}

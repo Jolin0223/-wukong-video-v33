@@ -22,7 +22,7 @@ window.LESSON_MEDIA = {
   storyBeats: [{start:0,label:'来到火焰山'},{start:4.95,label:'想借芭蕉扇'},{start:9.9,label:'准备闯汉字关'}],
   cave: 'assets/video/v3/V02_cave_idle_v3.mp4',
   introPoster: 'assets/video/v33/opening-poster.jpg',
-  cavePoster: 'assets/images/v3/G01_cave_daylight.png',
+  cavePoster: 'assets/images/v3/G01_cave_daylight.webp',
   narration: 'assets/audio/N01_intro.mp3',
   narrations: {
     mission: 'assets/audio/v10/W10_mission_invite.mp3',
