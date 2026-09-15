@@ -1,0 +1,37 @@
+/* 用户回传的生成素材，原图和 V1 分镜预演保留归档。 */
+window.LESSON_MEDIA = {
+  status: 'V33：新15秒开场已合成原旁白，保留字幕时间轴；M02、C05、E02及雨字徽章沿用已确认版本。',
+  pendingNarration: [],
+  missionExplanations:['assets/audio/v16/P04.mp3','assets/audio/v16/P05.mp3','assets/audio/v16/P06.mp3'],
+  fanReveal:null,
+  coverAudio:'assets/audio/v16/cover.mp3',
+  quizInvites:['assets/audio/v9/W07_quiz1.mp3','assets/audio/v9/W08_quiz2.mp3'],
+  outro: 'assets/video/v32/E02.mp4',
+  moveInvite:'assets/video/v31/C05.mp4',
+  moveInvitePoster:'assets/video/v31/C05-poster.jpg',
+  intro: 'assets/video/v33/opening.mp4',
+  arrival: 'assets/video/v19/flight-arrival.mp4',
+  arrivalLeadIn:7.1,
+  arrivalPoster:'assets/video/v19/flight-poster.jpg',
+  missionVideo:'assets/video/v31/M02.mp4',
+  missionPoster:'assets/video/v31/M02-poster.jpg',
+  arrivalOffset: 0,
+  introHasNarration: true,
+  narrationStart: 5.517,
+  narrationDuration: 5.447,
+  storyBeats: [{start:0,label:'来到火焰山'},{start:4.95,label:'想借芭蕉扇'},{start:9.9,label:'准备闯汉字关'}],
+  cave: 'assets/video/v3/V02_cave_idle_v3.mp4',
+  introPoster: 'assets/video/v33/opening-poster.jpg',
+  cavePoster: 'assets/images/v3/G01_cave_daylight.png',
+  narration: 'assets/audio/N01_intro.mp3',
+  narrations: {
+    mission: 'assets/audio/v10/W10_mission_invite.mp3',
+    move:'assets/audio/v9/W05_move.mp3', discover:'assets/audio/v9/W06_discover.mp3',
+    family:'assets/audio/v16/P07.mp3', write:'assets/audio/v16/P13.mp3',
+    question:'assets/audio/v16/P14.mp3', retry:'assets/audio/v16/P15.mp3',
+    correct:'assets/audio/v16/P16.mp3', meaning:'assets/audio/v16/P17.mp3',
+    complete:'assets/audio/v9/W09_finish.mp3'
+  },
+  sounds: {coverEntrance:'assets/audio/v28/cover-entrance.mp3',victory:'assets/audio/v23/victory.mp3',tap:'assets/audio/v26/tap.mp3', open:'assets/audio/v11/open.mp3', discover:'assets/audio/v11/discover.mp3', transition:'assets/audio/v11/transition.mp3', correct:'assets/audio/v11/correct.mp3'},
+  pronunciation: {'雨':'assets/audio/v16/P08.mp3','雪':'assets/audio/v16/P09.mp3','雷':'assets/audio/v16/P10.mp3','霞':'assets/audio/v16/P11.mp3','雾':'assets/audio/v16/P12.mp3'}
+};

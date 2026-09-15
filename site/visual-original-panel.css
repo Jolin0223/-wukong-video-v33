@@ -1,0 +1,26 @@
+/* Complete supplied panel image, original 4:3 aspect ratio, no background crop. */
+#learningPanelArt{display:none;position:absolute;left:150px;top:0;width:1386.667px;height:1040px;object-fit:contain;z-index:9;pointer-events:none}
+#stage:is([data-phase="learn"],[data-phase="trace"],[data-phase="quiz"],[data-phase="finish"]) #learningPanelArt{display:block}
+#lessonPanel::before,#lessonPanel::after,#stage[data-phase="quiz"] #lessonPanel::before{display:none}
+#lessonPanel,#finishPanel{background:none;border:0;box-shadow:none}
+.focus-card{left:285px;top:65px;width:430px;height:610px;padding:110px 30px 45px}
+.focus-scene{left:805px;top:90px;width:550px;height:535px}
+.focus-weather{width:540px;height:395px}
+.focus-meaning{font-size:37px;padding:14px 12px}
+.word-picker{left:555px;top:684px;gap:10px}
+.word-picker button{width:112px;height:80px}
+.write-layout{grid-template-columns:100px 600px 280px;gap:55px;padding:60px 0 0 285px}
+.write-instruction{padding-top:104px;max-width:280px}
+.word-tab .tab-mark{font-size:19px;white-space:nowrap;letter-spacing:-1px}
+.write-instruction p{font-size:30px;padding:20px 17px;background:none;border:0}
+.quiz-wrap{padding:116px 505px 30px 285px}
+.quiz-top h2{font-size:43px}
+.options{gap:23px;margin-top:35px}
+.option .option-text{font-size:58px}
+.quiz-feedback{font-size:29px;padding:17px 22px}
+#finishPanel{left:270px;top:260px;width:1120px;height:581px;padding:45px 15px 30px 395px}
+.finish-seal{width:380px;height:530px}
+.finish-title{font-size:52px}
+.finish-words{gap:16px}.finish-words span{font-size:68px;padding:10px 15px}
+.finish-copy{font-size:31px}.finish-next{font-size:25px}
+#stage[data-phase="cave"][data-story-entry="true"] .wukong{animation:none}

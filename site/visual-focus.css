@@ -1,0 +1,73 @@
+/* V3.1: one focal learning card, a visible story world, fewer persistent panels. */
+.inventory,.wukong-bubble,.progress,.drag-hint{display:none!important}
+.topbar{left:65px;right:65px;top:36px}.brand{background:#fffdf1e8;border:1px solid #e3d6ad;border-radius:23px;box-shadow:none;padding:15px 24px;font-size:25px}
+.top-tools{gap:12px}.top-tools .small-btn{border:1px solid #d7ddc4;background:#fffdf1e8;padding:15px 24px;font-size:25px;box-shadow:none}
+.caption{left:72px;right:72px;bottom:38px;height:106px;padding:0;border:0;background:none;box-shadow:none;border-radius:0;gap:24px}
+.caption>div:first-child{padding:18px 27px;background:#fffdf1f2;border:1px solid #e3d6ae;border-radius:24px}
+.caption h2{font-size:34px;white-space:normal;margin:0;line-height:1.4}.caption p{display:none}
+.caption .actions{margin-left:auto;flex-shrink:0}.primary{font-size:29px;min-height:78px;padding:17px 29px}.secondary{font-size:25px;min-height:70px}
+#stage:is([data-phase="learn"],[data-phase="trace"],[data-phase="quiz"],[data-phase="finish"]) .caption>div:first-child{display:none}
+#stage[data-phase="learn"] .caption{bottom:35px}
+.notice{bottom:159px}
+#stage:is([data-phase="learn"],[data-phase="trace"],[data-phase="quiz"]) .wukong{left:1580px;top:442px;width:315px;height:473px}
+#stage[data-phase="cave"] .wukong{animation:arrive .9s ease-out both}
+@keyframes arrive{from{opacity:0;transform:translateX(75px)}to{opacity:1;transform:translateX(0)}}
+#relic{left:574px;top:232px;width:400px;height:570px;padding:128px 32px 55px}
+.relic-pinyin{font-size:46px}.relic-char{font-size:227px}.relic-label{font-size:27px;margin-top:28px}
+.drop-zone{background:#fff4b943;border:4px dashed #fff9d7;box-shadow:0 0 0 7px #e2dda633}.drop-zone b{font-size:76px}
+.cover-tags,.cover-foot{display:none}.cover-copy p{max-width:800px;margin-bottom:42px}.cover-copy{top:210px}
+#lessonPanel{left:0;top:130px;width:1920px;height:795px;border:0;border-radius:0;background:none;box-shadow:none}
+#lessonPanel:before{display:none}
+.focus-learning{position:relative;width:100%;height:100%}
+.focus-card{position:absolute;left:238px;top:34px;width:462px;height:641px;padding:122px 36px 54px;text-align:center;isolation:isolate;filter:drop-shadow(0 11px 9px #3b6c4422)}
+.focus-card:before{content:'';position:absolute;inset:0;z-index:-1;background:url('assets/images/v3/U02_character_card.png') center/126.5% 114.5% no-repeat;pointer-events:none}
+.focus-card:after{content:'';position:absolute;inset:39px 29px 36px;z-index:-2;background:#fffdf2;border-radius:37px;pointer-events:none}
+.focus-card .py{font-size:51px;color:#8d6944;line-height:1.2}
+.focus-glyph{font:300px/1.05 LessonKai;background:none;display:block;margin:6px auto 8px;padding:0;color:#296e5d}
+.focus-word{font:43px/1.3 LessonKai;color:#8b673b}
+.focus-scene{position:absolute;left:815px;top:50px;width:600px;height:572px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.focus-weather{width:590px;height:423px;object-fit:contain;filter:drop-shadow(0 12px 10px #37634817);pointer-events:none}
+.focus-meaning{font:34px/1.45 LessonKai;color:#335c4b;text-align:center;max-width:640px;padding:16px 23px;border-radius:24px;background:#fffdf2f2;border:1px solid #e3d8b7;margin:13px 0 0}
+.rain-explanation{background:#fffdf1ec;border:1px solid #e4d6b1;border-radius:34px;padding:24px 43px;text-align:center}
+.rain-explanation p{font:34px/1.4 LessonKai;margin:0;color:#496d5b}
+.radical-example{font:260px/1.12 LessonKai;position:relative;display:block;color:#55765b;margin:8px 0}
+.radical-example:after{content:attr(data-glyph);position:absolute;inset:0;color:#d87938;clip-path:inset(0 0 42% 0);pointer-events:none}
+.rain-explanation .accent{color:#c36d37}
+.word-picker{position:absolute;left:237px;top:699px;display:flex;gap:16px;align-items:center;margin:0;padding:0}
+.word-picker button{width:122px;height:89px;background:#fffdf1f2;border:2px solid #d3dec1;border-radius:23px;display:flex;justify-content:center;align-items:center;gap:8px;padding:10px;color:#47715b}
+.word-picker .char{font:47px/1 LessonKai}.word-picker .py{font-size:23px;color:#937551}
+.word-picker button.selected{background:#ffefc5;border-color:#d8ae5e;box-shadow:0 5px 0 #d7b56f}
+.picker-label{font-size:23px;color:#44674d;background:#fffdf1dd;padding:13px 16px;border-radius:18px;margin-right:2px}
+.write-layout{display:grid;grid-template-columns:126px 640px 390px;gap:60px;padding:60px 0 0 205px;height:100%}
+.word-tabs{padding-top:90px;gap:22px}.word-tab{padding:18px 9px}.word-tab .tab-char{font-size:79px}.word-tab .tab-mark{font-size:22px}
+.write-board{width:580px;height:580px;margin:25px auto 0;background:linear-gradient(#fffdf3,#fffdf3) center / calc(100% - 72px) calc(100% - 72px) no-repeat;border-radius:34px}
+.write-board .frame-art{inset:-57px}.write-board canvas{inset:36px;width:calc(100% - 72px);height:calc(100% - 72px)}.guide-char{inset:36px;font-size:443px}
+.write-board:before{left:36px;width:calc(100% - 72px)}.write-board:after{top:36px;height:calc(100% - 72px)}
+.board-tools{margin-top:32px;gap:21px}.board-tools button{background:#fffdf0;border:1px solid #cddabe;padding:16px 24px;font-size:25px;min-height:65px;border-radius:23px}
+.write-instruction{padding:104px 0 0 0;max-width:390px}
+.write-instruction h2{font-size:59px;margin:0 0 22px}
+.write-instruction p{font:32px/1.6 LessonKai;margin:0;background:#fffdf0ed;border:1px solid #e2d7b4;border-radius:27px;padding:22px 24px}
+.write-instruction ol,.write-instruction .panel-heading{display:none}
+.write-badge{margin-top:28px;font-size:24px;background:#fff1ca}
+.quiz-wrap{padding:74px 220px 30px 220px}
+.quiz-top{padding:25px 32px;border:1px solid #e3d6b3;border-radius:28px;background:#fffdf2f5}
+.quiz-top .panel-heading,.quiz-hint,.option-letter{display:none}
+.quiz-top h2{font-size:47px;margin:0}.quiz-step{font-size:26px;padding:12px 19px}
+.options{gap:30px;margin:51px 0 27px}.option{height:295px;padding:81px 22px 40px}.option .option-text{font-size:66px}
+.option:before{inset:50px 23px 30px;border-radius:70px}.quiz-feedback{font-size:31px;padding:21px 30px;min-height:87px;line-height:1.45}
+.quiz-feedback:empty{visibility:hidden}
+#stage[data-phase="quiz"] .wukong{left:1680px;top:510px;width:230px;height:345px}
+#finishPanel{background:none;border:0;box-shadow:none;left:208px;top:233px;width:1310px;height:581px;padding:48px 30px 30px 482px}
+.finish-seal{left:0;top:0;width:427px;height:541px;font-size:164px}
+.finish-title{font-size:61px;margin:5px 0 25px}.finish-copy{font-size:34px}.finish-copy:first-of-type{display:none}
+.finish-words{gap:23px;margin:20px 0 30px}.finish-words span{font-size:76px;background:#fffdf0e8;border:1px solid #ded6b1;border-bottom:3px solid #d4ae59;border-radius:18px;padding:10px 19px}
+.finish-next{font-size:27px;margin-top:21px}.finish-copy,.finish-next{background:#fffdf0e8;padding:14px 20px;border-radius:20px}
+#stage[data-phase="finish"] .wukong{left:1480px;top:369px;width:388px;height:582px}
+.cinema-copy{left:72px;right:72px;bottom:45px;align-items:center}
+.cinema-copy h2{font:40px/1.4 LessonKai;margin:0;max-width:1140px}
+.cinema-copy p{display:none}.cinema-copy>div{padding:19px 27px;border-radius:25px}
+.cinema-gradient{background:linear-gradient(0deg,#1e584144,transparent 22%)}
+.cinema-top{top:37px;left:64px;right:64px}.cinema-label{font-size:24px;padding:15px 24px}
+.cinema-label{display:none}.cinema-top{justify-content:flex-end}
+#stage[data-phase="intro"] .topbar{visibility:hidden}
+@media(prefers-reduced-motion:reduce){#stage[data-phase="cave"] .wukong{animation:none}}

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#a4dfe9">
+<link rel="icon" href="data:,">
+<title>悟空借芭蕉扇 · 雨字头第一关</title>
+<style>
+@font-face{font-family:LessonKai;src:url('assets/fonts/kaiti.woff')}@font-face{font-family:LessonRound;src:url('assets/fonts/cuyuan.woff')}@font-face{font-family:LessonPinyin;src:url('assets/fonts/iteachpinyin.ttf')}
+:root{--ink:#213f35;--green:#2d6b48;--dark:#173d32;--cream:#fff9e8;--gold:#f7cc67;--orange:#d66032;--muted:#69745e}
+*{box-sizing:border-box}body{margin:0;background:#000;overflow:hidden;font-family:LessonRound,'PingFang SC',sans-serif;color:var(--ink)}button{font:inherit;border:0;cursor:pointer;color:inherit;touch-action:manipulation}button:focus-visible{outline:7px solid #edb52e;outline-offset:8px}button:disabled{opacity:.42;cursor:default}button:not(:disabled):active{filter:brightness(.95)}[hidden]{display:none!important}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;overflow:hidden;background:var(--dark);isolation:isolate}.py,.relic-pinyin,.write-instruction h2 span{font-family:LessonPinyin,'Times New Roman',serif!important;letter-spacing:0}#stage[data-phase="cover"] .topbar,#stage[data-phase="cover"] .inventory{visibility:hidden}#cover .secondary{color:var(--ink)}#cover{background:linear-gradient(0deg,#113b30 0%,#113b30 28%,transparent 58%),linear-gradient(90deg,#113b30f7 0%,#113b30e8 40%,#1237298f 67%,#153c291a)!important}.option:disabled{opacity:1}.option:disabled:not(.correct){opacity:.58}
+.backdrop,.scene-video,.side-plate{position:absolute;inset:0;width:1920px;height:1080px;object-fit:cover;pointer-events:none}.scene-video{transition:opacity .7s}.side-plate{clip-path:inset(0 0 0 79%)}
+.scene-shade{position:absolute;inset:0;background:linear-gradient(180deg,#0c26192b,transparent 28%,transparent 60%,#0d261552 84%);pointer-events:none}
+.topbar{position:absolute;top:38px;left:52px;right:52px;height:92px;display:flex;align-items:center;justify-content:space-between;z-index:15;gap:30px}.brand{display:flex;align-items:center;gap:20px;background:var(--cream);border:3px solid #e7cf99;padding:18px 30px;border-radius:50px;font-size:29px;box-shadow:0 6px 0 #173d3225}.brand-seal{display:grid;place-items:center;width:48px;height:48px;background:var(--orange);color:white;border-radius:15px;font-family:LessonKai;font-size:38px}.top-tools{display:flex;gap:14px}.small-btn{border:2px solid #d6d3b8;background:var(--cream);padding:19px 27px;border-radius:30px;font-size:25px}.small-btn.active{background:var(--gold)}
+.progress{display:flex;gap:7px;background:#163e33eb;padding:16px 25px;border:1px solid #96a67b;border-radius:50px;color:#d8dfb7;align-items:center;font-size:25px}.progress span{padding:10px 17px;border-radius:25px}.progress span.now{background:var(--gold);color:var(--dark)}.progress span.done{color:#ffe0a0}.progress i{width:24px;height:2px;background:#bbcaa67a}
+.caption{position:absolute;left:0;right:0;bottom:0;height:278px;padding:47px 90px 42px;background:var(--cream);border-top:7px solid #eac27b;z-index:12;display:flex;align-items:center;justify-content:space-between;gap:44px}.caption:before{content:'';position:absolute;inset:11px 25px;border:1px solid #ddc993;pointer-events:none;border-radius:8px}.speaker{font-size:24px;letter-spacing:3px;color:#b26632;margin-bottom:14px}.caption h2{margin:0 0 12px;font-family:LessonKai;font-size:48px;font-weight:normal;line-height:1.3}.caption p{margin:0;font-size:29px;color:#61705b;line-height:1.4}.primary{background:var(--green);color:#fff9db;min-height:83px;padding:20px 38px;border-radius:30px;font-size:31px;box-shadow:0 8px 0 #174331;white-space:nowrap}.primary.gold{background:var(--gold);color:var(--dark);box-shadow:0 8px 0 #c88d38}.secondary{color:var(--ink);border:2px solid #cbd0b6;background:#fffdf2;font-size:27px;padding:19px 29px;border-radius:25px}.actions{display:flex;gap:18px;align-items:center}.caption .actions{z-index:1}
+.inventory{position:absolute;right:79px;top:163px;z-index:3;width:228px;background:var(--cream);border:4px solid #d9b777;border-radius:30px;text-align:center;padding:24px 18px;font-size:24px;color:#516644;box-shadow:0 8px 0 #193b3029}.inventory strong{display:block;font-family:LessonKai;font-size:86px;color:#bfbda4;line-height:1.2}.inventory.earned strong{color:var(--orange)}.inventory small{font-size:20px}
+#rock{position:absolute;left:713px;top:240px;width:514px;height:348px;z-index:5;touch-action:none;background:none;padding:0;filter:drop-shadow(0 0 17px #ffcf53);transition:filter .2s,opacity .35s;will-change:transform}
+.rock-art{position:absolute;inset:0;background:url('assets/images/page-07.png') -713px -240px / 1920px 1080px;clip-path:polygon(2% 50%,11% 22%,22% 2%,37% 1%,65% 15%,87% 29%,98% 52%,99% 61%,84% 88%,58% 99%,25% 92%,7% 69%)}.rock-dots{position:absolute;left:190px;top:133px;color:#4d584e;font-size:57px;letter-spacing:10px;transform:rotate(-9deg)}#rock.dragging{filter:drop-shadow(0 14px 18px #092a24a0);cursor:grabbing}#rock.gone{opacity:0;pointer-events:none}.drag-hint{position:absolute;top:597px;left:702px;z-index:6;background:#fff7d4;border:3px solid #f2c254;border-radius:36px;padding:16px 28px;font-size:26px;pointer-events:none;box-shadow:0 5px 16px #10241b50;animation:breathe 2s ease-in-out infinite}.drag-hint span{color:var(--orange);margin-right:10px}.drop-zone{position:absolute;left:245px;top:264px;width:285px;height:295px;border:5px dashed #f5dc91;border-radius:50%;z-index:4;background:#2e5c4166;display:grid;place-content:center;text-align:center;color:#fff6c4;font-size:27px;line-height:1.5;pointer-events:none}.drop-zone b{font-size:65px;font-weight:normal}.drop-zone.active{background:#aacc6f66;border-style:solid}.dust{position:absolute;left:670px;top:360px;width:580px;height:250px;background:radial-gradient(ellipse,#f3e2b3c0,transparent 67%);filter:blur(20px);z-index:5;pointer-events:none;animation:dust .8s both}
+#relic{position:absolute;left:817px;top:277px;width:290px;height:335px;z-index:6;border:5px solid #ffe6a2;border-radius:100px 100px 50px 50px;background:linear-gradient(150deg,#fff9cf,#f4c669);box-shadow:0 0 65px #f7d36280,0 13px 0 #906333;animation:reveal .65s both;color:#254c39}.relic-pinyin{font-size:35px;display:block}.relic-char{font:160px/1 LessonKai;display:block}.relic-label{font-size:25px;display:block;margin-top:12px}
+#cover{position:absolute;inset:0;z-index:30;background:linear-gradient(90deg,#113b30f7 0%,#113b30e8 40%,#1237298f 67%,#153c291a);color:var(--cream)}.cover-copy{position:absolute;left:134px;top:209px;width:940px}.eyebrow{font-size:27px;letter-spacing:6px;color:#ead092;display:flex;gap:20px;align-items:center}.eyebrow:before{content:'';width:65px;height:3px;background:#ead092}.cover-copy h1{font-family:LessonKai;font-size:121px;line-height:1.13;letter-spacing:7px;font-weight:normal;margin:35px 0 26px}.cover-copy h1 em{display:block;color:#ffdb86;font-style:normal}.cover-copy p{font-family:LessonKai;font-size:42px;line-height:1.7;color:#f7f0d8;margin:24px 0 36px}.cover-tags{display:flex;gap:16px;color:#e4e5c8;font-size:27px;margin:30px 0 55px}.cover-tags span{padding:13px 20px;border:1px solid #849c7e;border-radius:22px}.cover-foot{position:absolute;left:135px;bottom:62px;font-size:23px;color:#d8dcc2}.cover-symbol{position:absolute;right:196px;top:138px;width:155px;height:210px;display:grid;place-content:center;background:#fff4cd;border:6px solid #d0a851;box-shadow:0 8px 0 #815c2e;border-radius:20px 20px 80px 80px;color:var(--green);text-align:center;font-size:24px}.cover-symbol b{font:110px/1.2 LessonKai}
+#cinema{position:absolute;inset:0;z-index:25;background:#111b13}#introVideo{width:1920px;height:1080px;object-fit:cover}.cinema-gradient{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#142919 0%,#142919f5 24%,transparent 48%)}.cinema-copy{position:absolute;bottom:70px;left:96px;right:90px;display:flex;justify-content:space-between;align-items:flex-end;color:#fff4ce;gap:70px}.cinema-copy .eyebrow{font-size:24px}.cinema-copy h2{font:52px/1.4 LessonKai;margin:16px 0}.cinema-copy p{font-size:31px;margin:0;color:#e2dcc6}.cinema-top{position:absolute;left:65px;right:65px;top:48px;display:flex;justify-content:space-between}.cinema-label{background:#183728c9;color:#ffdfa1;padding:20px 30px;border-radius:30px;font-size:25px}.playbar{position:absolute;bottom:0;height:8px;left:0;width:0;background:var(--gold)}
+#lessonPanel{position:absolute;left:235px;top:174px;width:1450px;height:605px;border:5px solid #ddc38a;border-radius:44px;background:var(--cream);box-shadow:0 19px 70px #10292359;z-index:10;overflow:hidden;animation:panelIn .5s both}.panel-heading{font-size:23px;letter-spacing:4px;color:#9b663c}.learn-layout{display:grid;grid-template-columns:325px 1fr;height:100%;padding:50px 58px;gap:52px}.large-word{position:relative;border-right:2px solid #e5d4ab;text-align:center;padding-right:44px}.large-word .py{font-size:42px;color:#8b6143}.large-word .char{font:245px/1.08 LessonKai;color:var(--green);display:block}.large-word .label{font-size:29px}.large-word .stroke-note{font:26px/1.4 LessonKai;color:#6a755d;margin-top:25px}.lesson-copy h2{font:49px/1.3 LessonKai;margin:20px 0 13px}.lesson-copy p{font:32px/1.55 LessonKai;margin:0;color:#5a684f}.family{display:flex;gap:17px;margin:26px 0}.family-card{position:relative;flex:1;background:#eeeeda;border:3px solid transparent;border-radius:25px;padding:17px 10px 12px;text-align:center;min-height:186px}.family-card.selected{background:#fff0be;border-color:#d5a750;box-shadow:0 6px 0 #d8b568}.family-card .py{font-size:26px;color:#776144}.family-card .char{font:92px/1.14 LessonKai;display:block}.family-note{min-height:50px;font:31px/1.5 LessonKai;color:#a2512b}.family-card:after{content:'';position:absolute;left:29%;right:29%;top:59px;height:45px;border-radius:10px;border-top:4px solid #cc73466b;pointer-events:none}.reading-note{font-size:22px!important;color:#8c8266!important;margin-top:8px!important}
+.write-layout{display:grid;grid-template-columns:145px 478px 1fr;gap:35px;padding:30px 42px;height:100%}.word-tabs{display:flex;flex-direction:column;gap:20px;padding-top:29px}.word-tab{border:3px solid #e0d1a6;border-radius:25px;padding:17px 10px;background:#fffdf2}.word-tab.current{background:#fce9ad;border-color:#cc9e40}.word-tab .tab-char{font:74px/1.1 LessonKai;display:block}.word-tab .tab-mark{font-size:20px;color:#65704e;display:block;min-height:25px;margin-top:7px}.write-board{position:relative;width:465px;height:465px;margin-top:9px;background:#fffdf6;border:4px solid #c87864;border-radius:15px;overflow:hidden}.write-board:before,.write-board:after{content:'';position:absolute;z-index:0;pointer-events:none}.write-board:before{top:50%;left:0;width:100%;border-top:2px dashed #dcb7a6}.write-board:after{left:50%;top:0;height:100%;border-left:2px dashed #dcb7a6}.guide-char{position:absolute;inset:0;display:grid;place-content:center;font:405px/1 LessonKai;color:#ddd7c6;pointer-events:none}.write-board canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}.board-tools{display:flex;gap:18px;margin-top:16px;justify-content:center}.board-tools button{font-size:23px;padding:12px 29px;min-height:49px;border-radius:18px;background:#edecd9}.write-instruction{padding:25px 8px}.write-instruction h2{font:50px/1.3 LessonKai;margin:14px 0 18px}.write-instruction p{font:31px/1.6 LessonKai;color:#647055;margin:0 0 19px}.write-instruction ol{list-style:none;padding:0;margin:28px 0}.write-instruction li{font-size:28px;line-height:1.5;margin-bottom:25px}.write-instruction li b{display:inline-grid;place-content:center;background:#e2e8cb;border-radius:50%;width:44px;height:44px;margin-right:14px;font-weight:normal}.write-badge{font-size:24px;color:#986439;background:#f4ebcf;border-radius:20px;padding:17px 20px;display:inline-block}
+.quiz-wrap{padding:43px 65px}.quiz-top{display:flex;justify-content:space-between;align-items:center}.quiz-top h2{font:51px/1.35 LessonKai;margin:13px 0}.quiz-step{padding:14px 24px;background:#e7ecd6;border-radius:24px;font-size:25px;white-space:nowrap}.quiz-hint{font:30px/1.4 LessonKai;color:#647158;margin:0}.options{display:flex;gap:28px;margin:31px 0 26px}.option{position:relative;flex:1;min-height:207px;background:#f4ebcf;border:4px solid #dcd4b2;border-radius:28px;box-shadow:0 7px 0 #dad0ab;padding:19px 24px 20px;text-align:left}.option-letter{font-size:23px;color:#817158;display:block}.option .option-text{font:65px/1.6 LessonKai;display:block;text-align:center;white-space:nowrap}.option.correct{background:#dfedc9;border-color:#61894c;box-shadow:0 7px 0 #517746}.option.wrong{background:#fff0dc;border-color:#ce906c;animation:shake .3s}.option.correct:after{content:'✓';position:absolute;right:18px;top:13px;font-size:39px;color:#346b3d}.quiz-feedback{font:31px/1.5 LessonKai;min-height:54px;color:#6b755b}.quiz-feedback.good{color:#346b3d}.quiz-feedback.retry{color:#a35d2d}.progress-dots{display:flex;gap:9px}.progress-dots i{width:15px;height:15px;border-radius:50%;background:#d5dbc3}.progress-dots i.filled{background:#5d8446}
+#finishPanel{position:absolute;left:330px;top:180px;width:1250px;height:584px;background:var(--cream);border:5px solid #daba78;border-radius:44px;z-index:10;text-align:center;padding:35px 75px;box-shadow:0 18px 60px #0f271c70;animation:panelIn .5s both}.finish-seal{display:inline-grid;place-content:center;width:133px;height:133px;background:#f4d577;border:5px double #b28d3d;border-radius:50%;font:94px/1 LessonKai;color:#305336}.finish-title{font:65px/1.2 LessonKai;margin:21px 0 19px}.finish-copy{font:35px/1.45 LessonKai;margin:0}.finish-words{display:flex;justify-content:center;gap:23px;margin:23px 0}.finish-words span{font:54px/1.3 LessonKai;border-bottom:2px solid #cfb675;padding:0 18px 6px}.finish-next{font-size:26px;color:#92714b;margin-top:21px}
+#notes{position:absolute;inset:0;z-index:50;background:#12271dcc;display:grid;place-content:center}.notes-card{width:1270px;max-height:890px;background:var(--cream);border-radius:35px;border:4px solid #ddc894;padding:45px 58px;overflow:auto}.notes-head{display:flex;justify-content:space-between;align-items:center}.notes-head h2{font:47px LessonKai;margin:0 0 25px}.notes-card p,.notes-card li{font:29px/1.65 LessonKai}.notes-card ul{padding-left:30px}.notes-card strong{color:#a65c2b}.notes-card .status{font-size:27px;padding:22px 26px;background:#eee8d1;border-radius:20px;margin:12px 0 25px}.notes-controls{display:flex;gap:15px;flex-wrap:wrap}.notice{position:absolute;left:50%;bottom:297px;transform:translateX(-50%);z-index:60;max-width:1300px;padding:21px 35px;background:#153e33;color:#fff5cb;border:2px solid #e4cf97;border-radius:24px;font-size:27px;box-shadow:0 6px 20px #0d221c50}.media-fallback{position:absolute;left:60px;top:160px;background:#fff4d9;color:#734e33;padding:17px 24px;border-radius:25px;z-index:20;font-size:25px}
+@keyframes panelIn{from{opacity:0;transform:translateY(60px) scale(.94)}to{opacity:1;transform:none}}@keyframes reveal{from{opacity:0;transform:scale(.5) rotate(-8deg)}to{opacity:1;transform:none}}@keyframes breathe{50%{transform:translateY(7px)}}@keyframes shake{25%{transform:translateX(-9px)}75%{transform:translateX(9px)}}@keyframes dust{to{opacity:0;transform:scale(1.5)}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+.rock-art{background:url('assets/images/A02_rock.png') -237px -79px / 962px 541px no-repeat;clip-path:none}
+#rock{height:357px}.sealed-rock{position:absolute;width:514px;height:357px;background:url('assets/images/A02_rock.png') -237px -79px / 962px 541px no-repeat;pointer-events:none;filter:brightness(.83);z-index:2}.sealed-left{left:530px;top:505px;transform:rotate(-18deg)}.sealed-right{left:979px;top:514px;transform:rotate(15deg)}
+.read-rain{padding:0;background:none;margin:0 auto}.topbar{gap:15px}.top-tools{gap:10px}.top-tools .small-btn{padding:19px 22px}.brand{padding:18px 24px}.progress{padding:14px 16px}
+</style>
+<link rel="stylesheet" href="visual-v3.css?v=3">
+<link rel="stylesheet" href="visual-focus.css?v=31">
+<link rel="stylesheet" href="visual-panel.css?v=32">
+<link rel="stylesheet" href="visual-original-panel.css?v=4">
+<link rel="stylesheet" href="visual-polish.css?v=5">
+<link rel="stylesheet" href="story-motion.css?v=7">
+<link rel="stylesheet" href="quiz-scene.css?v=7">
+<link rel="stylesheet" href="mission-v17.css?v=17">
+<style>
+#stage #cover{background:#000!important;cursor:pointer}
+#stage #cover::before,#stage #cover::after{display:none!important}
+#stage #cover #startBtn{position:absolute;inset:0;width:100%;height:100%;padding:0;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;transform:none;display:block}
+#stage #cover img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
+#stage #cover #startBtn:focus-visible{outline:5px solid #ffe7a3;outline-offset:-5px}
+
+#stage[data-phase="cover"] .wukong{left:1200px;top:145px;width:645px;height:925px;animation:cover-hero-in .85s cubic-bezier(.2,.7,.2,1) both}
+@keyframes cover-hero-in{from{opacity:0;transform:translateX(100px) scale(.96)}to{opacity:1;transform:none}}
+.mission-speech{font-size:29px;line-height:1.3;top:235px;padding:13px 25px}
+@media(prefers-reduced-motion:reduce){#stage[data-phase="cover"] .wukong{animation:none}}
+
+#startMission{border-color:#dca65f;color:#fffdf2}
+#startMission:focus-visible{outline:4px solid #bb7b30;outline-offset:5px}
+#stage .voice-role{display:none}
+#stage[data-phase="quiz"] .quiz-body{margin-top:62px}
+#stage[data-phase="quiz"] .quiz-feedback{margin-top:20px;min-height:86px}
+</style><link rel="stylesheet" href="layout-v18.css?v=18"><link rel="stylesheet" href="media-v19.css?v=19"><link rel="stylesheet" href="art-v20.css?v=20"><link rel="stylesheet" href="finish-v21.css?v=21">
+<link rel="stylesheet" href="buttons-v23.css?v=23">
+<link rel="stylesheet" href="cover-v24.css?v=24">
+<link rel="stylesheet" href="cover-v25.css?v=25">
+<link rel="stylesheet" href="buttons-v26.css?v=26"><link rel="stylesheet" href="buttons-v27.css?v=27"><link rel="stylesheet" href="buttons-v28.css?v=28"><link rel="stylesheet" href="buttons-v29.css?v=29"><link rel="stylesheet" href="speaking-v31.css?v=31"></head>
+<body>
+<main id="stage" aria-label="悟空借芭蕉扇互动课件">
+  <img class="backdrop" src="assets/images/v3/G01_cave_daylight.png" alt="明亮的仙山洞口">
+  <video id="caveVideo" class="scene-video" muted playsinline loop preload="auto" poster="assets/images/v3/G01_cave_daylight.png"></video>
+  <img id="wukong" class="wukong" src="assets/images/v3/C00_wukong_master.png" alt="陪你一起闯关的小悟空">
+  <div id="wukongBubble" class="wukong-bubble" aria-hidden="true">一起找找汉字的秘密！</div>
+  <div class="sealed-rock sealed-left" aria-hidden="true"></div><div class="sealed-rock sealed-right" aria-hidden="true"></div>
+  <div class="scene-shade"></div>
+  <header class="topbar">
+    <div class="brand"><span id="phaseLabel">第一关 · 寻找线索</span></div>
+    <nav class="progress" aria-label="本关学习进度"><span data-step="0">发现</span><i></i><span data-step="1">识字</span><i></i><span data-step="2">描写</span><i></i><span data-step="3">练习</span></nav>
+    <div class="top-tools"><button id="replayVoice" class="small-btn">重听</button><button id="soundBtn" class="small-btn" aria-pressed="false">声音开</button><button id="notesBtn" class="small-btn" aria-haspopup="dialog">说明</button><button id="fullscreenBtn" class="small-btn">全屏</button></div>
+  </header>
+  <aside id="inventory" class="inventory">借扇线索<strong>雨</strong><small id="inventoryLabel">等待发现</small></aside>
+  <div id="dropZone" class="drop-zone" aria-label="石头的放置区域"><b aria-hidden="true">←</b><strong id="dropLabel">放到这里</strong></div>
+  <div class="drag-trail" aria-hidden="true"><span>‹</span><span>‹</span><span>‹</span></div>
+  <button id="rock" aria-label="拖动第一块石头"><span class="rock-art"></span><span class="rock-dots">•••</span></button>
+  <div id="dragHint" class="drag-hint"><span>↔</span>按住石头，向左拖动</div>
+  <button id="relic" aria-label="打开雨字学习卡" hidden><span class="relic-pinyin">yǔ</span><span class="relic-char">雨</span><span class="relic-label">点我 · 发现秘密</span></button>
+  <div id="discoveryAura" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div id="learningPanelArt" aria-hidden="true"><svg class="panel-edge" viewBox="0 0 780 1728" preserveAspectRatio="none" aria-hidden="true"><image href="assets/images/v3/U01_learning_panel.png" width="2304" height="1728"/></svg><svg class="panel-stretch" viewBox="760 0 1 1728" preserveAspectRatio="none" aria-hidden="true"><image href="assets/images/v3/U01_learning_panel.png" width="2304" height="1728"/></svg><svg class="panel-center" viewBox="780 0 744 1728" preserveAspectRatio="none" aria-hidden="true"><image href="assets/images/v3/U01_learning_panel.png" width="2304" height="1728"/></svg><svg class="panel-stretch" viewBox="1544 0 1 1728" preserveAspectRatio="none" aria-hidden="true"><image href="assets/images/v3/U01_learning_panel.png" width="2304" height="1728"/></svg><svg class="panel-edge" viewBox="1524 0 780 1728" preserveAspectRatio="none" aria-hidden="true"><image href="assets/images/v3/U01_learning_panel.png" width="2304" height="1728"/></svg></div>
+  <section id="lessonPanel" aria-label="汉字学习" hidden></section>
+  <section id="finishPanel" hidden>
+<h2 class="finish-title">闯关成功</h2><p class="finish-subtitle">第一块石头搬开啦</p>
+<div class="finish-companion"><img src="assets/images/v21/wukong-cloud-cutout.png" alt="悟空乘云飞来，抬膝握拳为你庆祝"><div class="finish-seal" aria-label="获得雨字线索">雨</div></div>
+<div class="finish-summary"><h3>我们认识了这些雨字头的字</h3>
+<div class="finish-words"><div><span class="py">xuě</span><span>雪</span></div><div><span class="py">léi</span><span>雷</span></div><div><span class="py">xiá</span><span>霞</span></div><div><span class="py">wù</span><span>雾</span></div></div>
+<p class="finish-copy">雨字头的字，多和降水、天气现象有关。</p><p class="finish-next">带上线索，下次继续寻找“心”的秘密。</p></div></section>
+  <footer id="caption" class="caption"><div><div class="speaker" id="speaker">悟空的伙伴</div><h2 id="captionTitle"></h2><p id="captionDetail"></p></div><div class="actions" id="captionActions"></div></footer>
+  <section id="cover" aria-label="课件封面"><button id="startBtn" aria-label="开始闯关，从头播放"><img src="assets/images/v10/cover.png" alt="悟空借芭蕉扇，石头里的汉字，开始闯关" draggable="false"></button></section>
+  <section id="missionPanel" aria-label="孙悟空汉字闯关任务" hidden>
+    <video id="missionVideo" class="mission-film" playsinline preload="metadata" aria-hidden="true"></video><img id="missionRest" src="assets/video/v31/M02-last.jpg" alt="" aria-hidden="true">
+    <div class="mission-cloud one" aria-hidden="true"></div><div class="mission-cloud two" aria-hidden="true"></div>
+    <span class="mission-star a" aria-hidden="true">✦</span><span class="mission-star b" aria-hidden="true">✧</span><span class="mission-star c" aria-hidden="true">✦</span>
+    <div class="mission-heading"><h1>孙悟空汉字闯关任务</h1><p>和悟空一起学汉字，拿芭蕉扇</p></div>
+    <div class="mission-speech">小伙伴，和我一起<br>搬石识字、写字闯关吧！</div><img class="mission-hero" src="assets/images/v3/C02_wukong_encourage.png" alt="准备和孩子一起闯关的小悟空">
+    <div class="mission-tasks" aria-label="三个闯关任务">
+      <button class="mission-task" data-mission="0" aria-pressed="true"><span class="mission-stone" aria-hidden="true"><img src="assets/images/v3/P01_draggable_rock.png" alt=""><span>1</span></span><span><strong>移石识字</strong><small>搬开石头，找一找藏着的汉字。</small></span></button>
+      <button class="mission-task" data-mission="1" aria-pressed="false"><span class="mission-stone" aria-hidden="true"><img src="assets/images/v3/P01_draggable_rock.png" alt=""><span>2</span></span><span><strong>点石学写</strong><small>点开字卡，读一读，再描一描。</small></span></button>
+      <button class="mission-task" data-mission="2" aria-pressed="false"><span class="mission-stone" aria-hidden="true"><img src="assets/images/v3/P01_draggable_rock.png" alt=""><span>3</span></span><span><strong>答题闯关</strong><small>解开汉字机关，收集借扇线索。</small></span></button>
+    </div>
+    <div class="mission-bottom"><p>今天先闯第一关，<br>收集第一条借扇线索。</p><button id="startMission" class="primary">和悟空一起出发 →</button></div>
+    <button id="replayOpening" class="mission-back">← 再看故事开头</button>
+  </section>
+  <section id="cinema" aria-label="故事引入视频" hidden><video id="introVideo" playsinline preload="metadata" muted></video><div class="cinema-gradient"></div><div class="cinema-top"><div class="cinema-label">第一幕 · 火焰山求扇</div><div class="actions"><button id="introSound" class="secondary" aria-pressed="false">声音开</button><button id="skipIntro" class="secondary">进入洞口 →</button></div></div><div class="cinema-copy"><div><div class="eyebrow">故事开始</div><h2>火焰山挡住了去路。<br>我们和悟空一起，去借芭蕉扇！</h2><p id="introCaption">铁扇公主的洞口，藏着什么秘密？</p></div><button id="pauseIntro" class="secondary">暂停</button></div><div id="videoProgress" class="playbar"></div></section>
+  <video id="moveInviteVideo" playsinline preload="metadata" hidden></video>
+  <section id="outro" aria-label="悟空收下线索的结尾视频" hidden><video id="outroVideo" playsinline preload="metadata"></video><img id="outroPoster" src="assets/video/v32/E02-last.jpg" alt="悟空在洞口庆祝找到线索"><span id="outroGlyph" aria-hidden="true">雨</span><div id="outroClue" aria-hidden="true"><img src="assets/images/v3/U05_rain_reward.png" alt=""><span>雨</span></div><div id="clueDock" aria-hidden="true"><img src="assets/images/v3/U05_rain_reward.png" alt=""><span>雨</span></div><div class="outro-tools"><button id="outroSound" class="secondary" aria-pressed="false">声音开</button><button id="pauseOutro" class="secondary">暂停</button><button id="skipOutro" class="secondary">查看本关收获 →</button></div><div id="outroCaption" class="outro-caption"></div></section>
+  <div id="mediaFallback" class="media-fallback" hidden>正在用故事图片继续</div>
+  <div id="notes" role="dialog" aria-modal="true" aria-labelledby="notesTitle" hidden><article class="notes-card"><div class="notes-head"><h2 id="notesTitle">这次，一起打磨第一关</h2><button id="closeNotes" class="secondary">返回课件 ×</button></div><div id="mediaStatus" class="status"></div><p><strong>当前能体验：</strong>故事开场 → H5任务说明 → 洞口视频 → 洞口拖石 → 点击汉字 → 学习卡 → 雨、雪描写 → 两道机关练习 → 悟空收下线索的结尾动画 → 本关回顾。</p><ul><li>对应原图第 5—13 页；其余图片已按 1—32 页归档，待确认体验后扩展整课。</li><li>开场为15秒连续故事视频。任务邀请、搬石邀请和线索到手已使用本轮新视频，沿用原悟空配音；结尾叠加正式“雨”字徽章。任务邀请播完定格，搬石邀请结束后恢复拖动。当前嘴部动作是普通图生视频的近似表现，尚未实现音频驱动的逐字对口型。知识讲解继续使用旁白；两道机关先由悟空邀请，再由旁白读题。</li><li>描写支持鼠标和触控，可撤销、擦除；由老师观察确认，不自动评价笔顺或书写质量。</li><li>第 10 页“雾”的拼音已改为 <b>wù</b>。“雨”是独体字；这里通过它认识“雪、雷、霞、雾”中的雨字头。</li><li>本关结束只获得一条借扇线索；选真扇与故事大结局会在全课实现。</li></ul><div class="notes-controls"><button id="restartBtn" class="primary">从头体验</button><button id="restartGateBtn" class="secondary">重做这一关</button></div></article></div>
+  <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+</main>
+<audio id="voice" preload="auto"></audio>
+<script src="media-config.js?v=33"></script>
+<script src="story-motion.js?v=7"></script>
+<script src="dialogue.js?v=24"></script>
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const KEY='wukong-rain-prototype-v3-focus';
+const media=window.LESSON_MEDIA||{};
+const voice=$('voice'); const tapAudio=new Audio('assets/audio/v26/tap.mp3');tapAudio.preload='auto';tapAudio.volume=1;let tapGeneration=0;const effect=new Audio();effect.preload='auto';let effectGeneration=0; let muted=false,voiceGeneration=0,wasVoicePlaying=false,queuedVoice=null;
+const blank=()=>({phase:'cover',selectedChar:'雨',traceChar:'雨',drawings:{'雨':[],'雪':[]},quizIndex:0,answers:[false,false],attempts:[0,0]});
+let state=blank(),saved=null,scale=1,noticeTimer,drag=null,stroke=null,returnFocus=null,wasIntroPlaying=false;
+let missionInterrupted=false,missionFallbackUsed=false,moveInviteActive=false,wasMovePlaying=false;
+let coverEntranceAudible=false,coverStartPending=false;let pendingAdvance=false,wasOutroPlaying=false,outroStill=false,outroTick=0,introTick=0;
+const director=createStoryDirector({stage:$('stage'),panel:$('lessonPanel'),footer:$('caption'),reduced:()=>reducedMotion(),record:(event,detail)=>{record(event,detail);if(event==='story-question-begin')playEffect('transition');}});
+const log=[];
+const record=(event,detail={})=>log.push({time:new Date().toISOString(),event,...detail});
+try{const raw=JSON.parse(localStorage.getItem(KEY));if(raw&&['cover','intro','mission','arrival','cave','discover','learn','trace','quiz','outro','finish'].includes(raw.phase)&&raw.drawings&&Array.isArray(raw.drawings['雨'])&&Array.isArray(raw.drawings['雪'])&&Array.isArray(raw.answers)&&raw.answers.length===2&&Array.isArray(raw.attempts)&&[0,1].includes(raw.quizIndex))saved=raw;}catch{}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state));}catch{}};
+function fit(){scale=Math.min(innerWidth/1920,innerHeight/1080);$('stage').style.transform=`translate(-50%,-50%) scale(${scale})`;}
+window.addEventListener('resize',fit);fit();
+function toast(text){clearTimeout(noticeTimer);$('notice').textContent=text;$('notice').hidden=false;noticeTimer=setTimeout(()=>$('notice').hidden=true,4200);}
+function hide(...ids){ids.forEach(id=>$(id).hidden=true);}function show(...ids){ids.forEach(id=>$(id).hidden=false);}
+function playTap(target='button'){
+ if(muted||document.hidden)return;
+ const generation=++tapGeneration;tapAudio.pause();tapAudio.currentTime=0;tapAudio.muted=false;
+ record('button-tap',{target});tapAudio.play().catch(e=>{if(generation===tapGeneration&&e.name!=='AbortError')record('tap-unavailable',{name:e.name});});
+}
+tapAudio.addEventListener('playing',()=>record('tap-playing'));
+document.addEventListener('click',e=>{
+ const b=e.target.closest?.('button,[role="button"]');
+ if(b?.id==='startBtn'&&(coverStartPending||(!coverEntranceAudible&&!muted&&!reducedMotion())))return;
+ if(!b||b.id==='rock'||b.disabled||b.getAttribute('aria-disabled')==='true'||b.closest('[inert],[hidden]'))return;
+ playTap(b.id||b.getAttribute('aria-label')||b.textContent.trim().slice(0,30));
+},true);
+function stopEffect(){effectGeneration++;effect.pause();effect.removeAttribute('src');effect.load();}
+function playEffect(name){const file=media.sounds?.[name];if(!file)return;stopEffect();const generation=effectGeneration;effect.src=file;effect.muted=muted;record('effect-request',{name,file});effect.play().catch(e=>{if(generation===effectGeneration&&e.name!=='AbortError')record('effect-unavailable',{name});});}
+effect.addEventListener('playing',()=>record('effect-playing',{file:effect.getAttribute('src')}));
+function stopAudio(){queuedVoice=null;voiceGeneration++;voice.pause();voice.removeAttribute('src');voice.load();voice.dataset.role='';}
+function tryVoice(){const generation=voiceGeneration;voice.play().catch(e=>{if(generation!==voiceGeneration||e.name==='AbortError')return;record('audio-play-failed',{name:e.name});if(!muted)toast('声音暂时未播放，可点“重听”；也可以看文字继续。');});}
+function sound(url,role='scene'){stopAudio();if(!url)return;voice.src=url;voice.dataset.role=role;voice.muted=muted;record('voice-request',{file:url,role});tryVoice();}
+function sceneVoice(){const n=media.narrations||{};return ({cave:n.move,discover:n.discover,learn:n.family,trace:n.write,finish:n.complete})[state.phase]||(state.phase==='quiz'?(state.answers[state.quizIndex]?(state.quizIndex===0?n.correct:n.family):(state.quizIndex===0?n.question:n.meaning)):null);}
+function playQuizVoice(){
+ if(state.phase!=='quiz'||state.answers[state.quizIndex]){sound(sceneVoice());return;}
+ const qi=state.quizIndex; sound(media.quizInvites[qi],'孙悟空');
+ queuedVoice={phase:'quiz',index:qi,file:qi===0?media.narrations.question:media.narrations.meaning};
+ const label=document.querySelector('.quiz-guide-label');if(label)label.textContent=qi===0?'帮我解开机关吧！':'再解开最后一道机关！';
+}
+function continueReader(){const q=queuedVoice;if(!q)return;queuedVoice=null;if(state.phase===q.phase&&state.quizIndex===q.index&&!state.answers[q.index]){sound(q.file,'旁白');const label=document.querySelector('.quiz-guide-label');if(label)label.textContent='听题，再选一块石头';}}
+voice.addEventListener('ended',continueReader);voice.addEventListener('error',continueReader);
+function syncIntroVoice(){
+ if(media.introHasNarration)return;
+ const v=$('introVideo'),t=v.currentTime-(media.narrationStart||0);
+ if(!media.narration)return;
+ const duration=voice.dataset.role==='intro'&&Number.isFinite(voice.duration)?voice.duration:(media.narrationDuration||Infinity);
+ if(t<0||t>=duration){if(voice.dataset.role==='intro')voice.pause();return;}
+ if(voice.dataset.role!=='intro'){sound(media.narration,'intro');return;}
+ if(voice.readyState>=1&&Math.abs(voice.currentTime-t)>.35)voice.currentTime=t;
+ if(v.paused)voice.pause();else if(voice.paused)tryVoice();
+}
+voice.addEventListener('loadedmetadata',()=>{if(state.phase==='intro'&&voice.dataset.role==='intro')syncIntroVoice();});
+function isStoryVideo(){return ['intro','arrival'].includes(state.phase);}
+function finishIntro(){if(!isStoryVideo())return;if(voice.dataset.role==='intro'&&!voice.ended&&!voice.error&&Number.isFinite(voice.duration)&&voice.duration>voice.currentTime+.15&&!voice.paused)return;if(state.phase==='intro')showMission();else enterCave();}
+function showMission(){
+ const v=$('introVideo');let frame;if(!reducedMotion()&&v.readyState>=2){frame=document.createElement('canvas');frame.id='transitionFrame';frame.width=1920;frame.height=1080;frame.getContext('2d').drawImage(v,0,0,1920,1080);}
+ change('mission');if(frame){$('stage').append(frame);frame.animate([{opacity:1},{opacity:0}],{duration:600,easing:'ease-out'}).finished.then(()=>frame.remove());}
+}
+function renderMission(){
+ const mv=$('missionVideo');missionInterrupted=false;missionFallbackUsed=false;$('missionPanel').classList.remove('resting');
+ mv.src=media.missionVideo;mv.poster=media.missionPoster;mv.muted=muted;mv.loop=false;mv.currentTime=0;
+ show('missionPanel');hide('caption');markProgress(0);record('mission-shown');
+ if(reducedMotion()){restMission();sound(media.narrations.mission,'wukong');}else playMission();
+}
+function restMission(){missionInterrupted=true;$('missionVideo').pause();$('missionPanel').classList.add('resting');}
+
+$('startMission').onclick=async()=>{
+ if(state.phase!=='mission'||$('missionPanel').inert)return;
+ record('mission-accepted');stopAudio();$('missionPanel').inert=true;
+ const panel=$('missionPanel'),mv=$('missionVideo');let frame;
+ if(!reducedMotion()){
+  await panel.animate([{opacity:1},{opacity:0.3}],{duration:200}).finished.catch(()=>{});
+  if(mv.readyState>=2){frame=document.createElement('canvas');frame.id='transitionFrame';frame.width=1920;frame.height=1080;const scale=Math.max(1920/mv.videoWidth,1080/mv.videoHeight),w=mv.videoWidth*scale,h=mv.videoHeight*scale;frame.getContext('2d').drawImage(mv,(1920-w)/2,(1080-h)/2,w,h);}
+ }
+ panel.inert=false;change('arrival');
+ if(frame){$('stage').append(frame);frame.animate([{opacity:1},{opacity:0}],{duration:250}).finished.then(()=>frame.remove()).catch(()=>frame.remove());}
+};$('replayOpening').onclick=()=>change('intro');
+$('missionPanel').querySelectorAll('[data-mission]').forEach(b=>b.onclick=()=>{$('missionPanel').querySelectorAll('[data-mission]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));const i=Number(b.dataset.mission);restMission();stopAudio();if(media.missionExplanations?.[i])sound(media.missionExplanations[i],'旁白');else record('mission-explanation-pending',{task:i});record('mission-explored',{task:i});});
+
+voice.addEventListener('playing',()=>record('voice-playing',{file:voice.getAttribute('src')}));
+voice.addEventListener('ended',()=>{record('voice-ended',{file:voice.getAttribute('src')});if(isStoryVideo()&&$('introVideo').ended)finishIntro();});
+voice.addEventListener('error',()=>{if(!voice.getAttribute('src'))return;record('audio-fallback',{file:voice.getAttribute('src')});toast('这句声音暂时无法播放，可以看文字继续。');if(isStoryVideo()&&$('introVideo').ended)finishIntro();});
+function toggleSound(){muted=!muted;tapAudio.muted=muted;if(muted){tapGeneration++;tapAudio.pause();}else playTap('sound-on');effect.muted=muted;$('missionVideo').muted=muted;$('moveInviteVideo').muted=muted;$('outroVideo').muted=muted;voice.muted=muted;$('introVideo').muted=media.introHasNarration?muted:true;for(const id of ['soundBtn','introSound','outroSound']){$(id).textContent=muted?'声音关':'声音开';$(id).setAttribute('aria-pressed',String(muted));}record('sound-toggle',{muted});}
+$('soundBtn').onclick=toggleSound;$('introSound').onclick=toggleSound;$('outroSound').onclick=toggleSound;
+$('replayVoice').onclick=()=>state.phase==='cave'&&media.moveInvite?startMoveInvite():state.phase==='quiz'&&!state.answers[state.quizIndex]?playQuizVoice():sound(sceneVoice());
+function markProgress(step){$('phaseLabel').textContent=['第一关 · 寻找线索','第一关 · 认识汉字','第一关 · 写一写','第一关 · 试一试','第一关 · 线索到手'][step]||'第一关';document.querySelectorAll('[data-step]').forEach(el=>{const n=+el.dataset.step;el.classList.toggle('now',n===step);el.classList.toggle('done',n<step);if(n===step)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current');});}
+function caption(title,detail,buttons=[]){$('captionTitle').textContent=title;$('captionDetail').textContent=detail;$('captionActions').replaceChildren();for(const def of buttons){const b=document.createElement('button');b.id=def.id||'';b.className=def.secondary?'secondary':'primary';b.textContent=def.text;b.disabled=!!def.disabled;b.addEventListener('click',def.run);$('captionActions').append(b);}}
+function playCave(){if(media.cave&&state.phase==='cave'&&!moveInviteActive)$('caveVideo').play().catch(()=>{});else $('caveVideo').pause();}
+function playMission(){const mv=$('missionVideo');if(state.phase==='mission'&&!missionInterrupted&&!mv.ended&&!document.hidden&&!reducedMotion()&&$('notes').hidden){mv.play().catch(e=>{if(e.name!=='AbortError')missionFallback(e.name);});}else mv.pause();}
+function missionFallback(reason){if(state.phase!=='mission'||missionInterrupted||missionFallbackUsed)return;missionFallbackUsed=true;record('mission-video-fallback',{reason});restMission();sound(media.narrations.mission,'孙悟空');}
+$('missionVideo').onerror=()=>missionFallback('load');
+$('missionVideo').onended=()=>{restMission();record('mission-speech-complete');};
+$('missionVideo').onplaying=()=>record('mission-speech-playing');
+
+function base(){$('moveReturnFrame')?.remove();stopMoveInvite(false);$('missionVideo').pause();cancelAnimationFrame(outroTick);cancelAnimationFrame(introTick);hide('cover','missionPanel','cinema','outro','lessonPanel','finishPanel','relic','dragHint','dropZone');$('outroVideo').pause();$('introVideo').pause();$('rock').hidden=true;show('caption');$('inventory').classList.toggle('earned',state.phase==='finish');$('inventoryLabel').textContent=state.phase==='finish'?'本关已获得':'等待发现';$('mediaFallback').hidden=true;playCave();}
+const reducedMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+function animateIn(el,keyframes,options){if(!el||reducedMotion())return null;return el.animate(keyframes,options);}
+function learningSnapshot(next){
+ if(reducedMotion()||!['learn','trace','quiz'].includes(state.phase)||!['learn','trace','quiz','finish'].includes(next)||next===state.phase)return null;
+ const source=$('lessonPanel'),ghost=source.cloneNode(true);
+ ghost.removeAttribute('id');ghost.className='lesson-exit';ghost.inert=true;ghost.setAttribute('aria-hidden','true');
+ ghost.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
+ ghost.style.cssText='left:'+source.offsetLeft+'px;top:'+source.offsetTop+'px;width:'+source.offsetWidth+'px;height:'+source.offsetHeight+'px';
+ const originals=source.querySelectorAll('canvas');
+ ghost.querySelectorAll('canvas').forEach((c,i)=>c.getContext('2d').drawImage(originals[i],0,0));
+ return ghost;
+}
+function transitionLearning(ghost,phase){
+ if(director.busy||phase==='outro'){ghost?.remove();return;}
+ if(ghost){$('stage').append(ghost);ghost.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-22px)'}],{duration:230,easing:'ease-in'}).finished.then(()=>ghost.remove()).catch(()=>ghost.remove());record('learning-transition',{to:phase});}
+ const target=phase==='finish'?$('finishPanel'):$('lessonPanel').firstElementChild;
+ if(['learn','trace','quiz','finish'].includes(phase))animateIn(target,[{opacity:0,transform:'translateY(26px)'},{opacity:1,transform:'translateY(0)'}],{duration:480,delay:ghost?140:0,easing:'cubic-bezier(.2,.75,.2,1)',fill:'backwards'});
+ if(phase==='quiz')$('lessonPanel').querySelectorAll('.option').forEach((el,i)=>animateIn(el,[{opacity:0,transform:'translateY(26px) scale(.96)'},{opacity:1,transform:'none'}],{duration:480,delay:220+i*90,easing:'cubic-bezier(.2,.8,.2,1)',fill:'backwards'}));
+}
+function burstAt(el,count=14){
+ if(!el||reducedMotion())return;
+ const rect=el.getBoundingClientRect(),stage=$('stage').getBoundingClientRect(),x=(rect.x+rect.width/2-stage.x)/scale,y=(rect.y+rect.height/2-stage.y)/scale;
+ for(let i=0;i<count;i++){
+  const bit=document.createElement('i');bit.className='celebration-particle';bit.setAttribute('aria-hidden','true');
+  bit.style.left=x+'px';bit.style.top=y+'px';bit.style.background=['#e6bd58','#81b798','#f0d68b','#add6c8'][i%4];$('stage').append(bit);
+  const angle=i/count*Math.PI*2,dx=Math.cos(angle)*(100+(i%4)*34),dy=Math.sin(angle)*110-80;
+  bit.animate([{opacity:0,transform:'scale(.3)'},{opacity:1,offset:.12},{opacity:0,transform:'translate('+dx+'px,'+(dy+90)+'px) rotate('+(i*65)+'deg) scale(.55)'}],{duration:850+i%3*100,easing:'cubic-bezier(.1,.55,.45,1)'}).finished.then(()=>bit.remove()).catch(()=>bit.remove());
+ }
+}
+function change(phase){
+ if(phase==='quiz'&&state.phase!=='quiz'){stopAudio();director.question(state.quizIndex,()=>applyChange(phase),()=>playQuizVoice());return;}
+ director.cancel();applyChange(phase);
+}
+function applyChange(phase){
+ const previous=state.phase;
+ const ghost=learningSnapshot(phase);
+ stopAudio();stopEffect();clearTimeout(noticeTimer);hide('notice');state.phase=phase;save();record('phase',{phase});render();
+ transitionLearning(ghost,phase);if(!['intro','arrival','mission','outro'].includes(phase)&&!(phase==='finish'&&previous==='outro')&&!director.busy&&!(phase==='cave'&&media.moveInvite))sound(sceneVoice());
+ if(phase==='finish')burstAt(document.querySelector('.finish-companion'),22);
+}
+function hero(mood='normal',text='一起找找汉字的秘密！'){
+ const file={normal:'C00_wukong_master',discover:'C01_wukong_discover',encourage:'C02_wukong_encourage',celebrate:'C03_wukong_celebrate'}[mood];
+ $('wukong').src=state.phase==='cover'?'assets/images/v24/cover-wukong.png':state.phase==='cave'?'assets/images/v33/C02_wukong_look_left.png':'assets/images/v3/'+file+'.png';$('wukongBubble').textContent=text;
+}
+function render(){base();$('stage').dataset.phase=state.phase;hero(state.phase==='finish'?'celebrate':state.phase==='discover'||state.phase==='learn'?'discover':'normal',({cover:'和我一起，出发吧！',cave:'搬开石头，找找线索！',discover:'咦！是一个“雨”字！',learn:'点点汉字，一起读！',trace:'慢慢描，我陪着你。',quiz:'仔细看看字的样子。',finish:'又找到一条线索！'})[state.phase]);switch(state.phase){case 'cover':show('cover');hide('caption');markProgress(0);break;case 'intro':renderIntro();break;case 'mission':renderMission();break;case 'arrival':renderIntro('arrival');break;case 'cave':renderCave();break;case 'discover':renderDiscover();break;case 'learn':renderLearn();break;case 'trace':renderTrace();break;case 'quiz':renderQuiz();break;case 'outro':renderOutro();break;case 'finish':renderFinish();break;}}
+function paintSpokenCue(container,cue){
+ const key=cue?cue.speaker+':'+cue.text:'';if(container.dataset.cue===key)return;container.dataset.cue=key;
+ container.replaceChildren();if(cue){const label=document.createElement('span');label.className='voice-role';label.textContent=cue.speaker;const line=document.createElement('span');line.className='spoken-text';line.textContent=cue.text;container.append(line);}
+}
+function updateIntroStory(){
+ const v=$('introVideo'),cue=currentDialogue(state.phase==='arrival'?'arrival':'intro',v.currentTime),h=document.querySelector('.cinema-copy h2');h.classList.add('subtitle-line');paintSpokenCue(h,cue);h.parentElement.classList.toggle('subtitle-empty',!cue);
+ const beat=Math.max(0,media.storyBeats.findLastIndex(b=>v.currentTime+(state.phase==='arrival'?media.arrivalOffset:0)>=b.start));if($('cinema').dataset.beat!==String(beat)){record('story-beat',{beat});$('cinema').dataset.beat=String(beat);}
+}
+function syncIntroSubtitles(){cancelAnimationFrame(introTick);const update=()=>{if(!isStoryVideo())return;updateIntroStory();if(!$('introVideo').paused)introTick=requestAnimationFrame(update);};update();}
+function renderIntro(kind='intro'){$('introVideo').src=kind==='arrival'?media.arrival:media.intro;$('introVideo').poster=kind==='arrival'?(media.arrivalPoster||media.cavePoster):media.introPoster;$('skipIntro').textContent=kind==='arrival'?'开始搬石 →':'看看闯关任务 →';show('cinema');hide('caption');markProgress(0);$('introVideo').muted=media.introHasNarration?muted:true;$('introVideo').currentTime=0;$('pauseIntro').hidden=false;$('pauseIntro').textContent='暂停';delete $('cinema').dataset.beat;updateIntroStory();$('introVideo').play().catch(()=>{$('pauseIntro').textContent='播放';document.querySelector('.cinema-copy h2').textContent='点击“播放”，和悟空一起出发。';});}
+function enterCave(){
+ const v=$('introVideo');let frame;
+ if(isStoryVideo()&&v.readyState>=2&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  frame=document.createElement('canvas');frame.id='transitionFrame';frame.width=1920;frame.height=1080;
+  const ratio=Math.max(1920/v.videoWidth,1080/v.videoHeight),w=v.videoWidth*ratio,h=v.videoHeight*ratio;
+  frame.getContext('2d').drawImage(v,(1920-w)/2,(1080-h)/2,w,h);$('stage').append(frame);
+ }
+ $('stage').dataset.storyEntry=String(state.phase==='arrival'&&v.currentTime>(media.arrivalLeadIn||0)+5);
+ stopAudio();change('cave');
+ if(frame){frame.animate([{opacity:1},{opacity:0}],{duration:450,easing:'ease-out'}).finished.then(()=>frame.remove());}
+}
+function startMoveInvite(){
+ if(state.phase!=='cave'||!media.moveInvite)return;stopAudio();
+ if(reducedMotion()){stopMoveInvite(true);sound(media.narrations.move,'孙悟空');return;}
+ const v=$('moveInviteVideo');moveInviteActive=true;$('stage').classList.add('cave-speaking');$('rock').inert=true;
+ $('caveVideo').pause();v.src=media.moveInvite;v.poster=media.moveInvitePoster;v.currentTime=0;v.muted=muted;v.hidden=false;
+ caption('小伙伴，帮我把发光的石头，向左搬开吧！','',[
+ {id:'pauseMoveInvite',text:'暂停',secondary:true,run:()=>{if(v.paused)v.play().catch(moveInviteFallback);else v.pause();}},
+ {id:'skipMoveInvite',text:'开始搬石 →',secondary:true,run:()=>stopMoveInvite(true)}
+ ]);
+ v.play().catch(moveInviteFallback);record('move-invitation-start');
+}
+function stopMoveInvite(restore){
+ const v=$('moveInviteVideo');
+ if(restore&&moveInviteActive&&state.phase==='cave'&&v.readyState>=2&&!reducedMotion()){
+  $('moveReturnFrame')?.remove();const frame=document.createElement('canvas');frame.id='moveReturnFrame';frame.width=1920;frame.height=1080;frame.getContext('2d').drawImage(v,0,0,1920,1080);$('stage').append(frame);
+  frame.animate([{opacity:1},{opacity:0}],{duration:350,easing:'ease-out'}).finished.then(()=>frame.remove()).catch(()=>frame.remove());
+ }
+ v.pause();v.hidden=true;moveInviteActive=false;wasMovePlaying=false;
+ $('stage').classList.remove('cave-speaking');$('rock').inert=false;
+ if(restore&&state.phase==='cave'){
+  caption('按住发光的石头，向左搬开吧！','',[{id:'assistMove',text:'帮我搬',secondary:true,run:()=>reveal('accessible-button')}]);
+  playCave();record('move-interaction-ready');
+ }
+}
+function moveInviteFallback(){if(state.phase==='cave'&&moveInviteActive){stopMoveInvite(true);sound(media.narrations.move,'孙悟空');record('move-invitation-fallback');}}
+$('moveInviteVideo').onended=()=>stopMoveInvite(true);
+$('moveInviteVideo').onerror=moveInviteFallback;
+$('moveInviteVideo').onplay=()=>{if($('pauseMoveInvite'))$('pauseMoveInvite').textContent='暂停';};
+$('moveInviteVideo').onpause=()=>{if($('pauseMoveInvite'))$('pauseMoveInvite').textContent='播放';};
+function caveInstruction(){if(state.phase!=='cave'||$('stage').dataset.caveBeat==='invite')return;$('stage').dataset.caveBeat='invite';$('captionTitle').textContent='小伙伴，帮我把发光的石头，向左搬开吧！';hero('encourage');record('story-cave-invitation');}
+function renderCave(){markProgress(0);show('rock','dropZone');hero('encourage');$('stage').dataset.caveBeat='arrival';$('rock').classList.remove('gone','dragging');$('rock').style.transform='';$('dropZone').classList.remove('active');$('dropLabel').textContent='放到这里';caption('小伙伴，帮我把发光的石头，向左搬开吧！','',[{id:'assistMove',text:'帮我搬',secondary:true,run:()=>reveal('accessible-button')}]);if(media.moveInvite)startMoveInvite();}
+voice.addEventListener('timeupdate',()=>{if(state.phase==='cave'&&voice.getAttribute('src')===media.narrations.move&&voice.currentTime>2.4)caveInstruction();});
+voice.addEventListener('error',()=>{if(state.phase==='cave')caveInstruction();});
+function reveal(method){if(state.phase!=='cave')return;record('rock-cleared',{method});change('discover');playEffect('discover');const dust=document.createElement('div');dust.className='dust';$('stage').append(dust);setTimeout(()=>dust.remove(),900);$('relic').focus({preventScroll:true});burstAt($('relic'),10);}
+function renderDiscover(){markProgress(0);show('relic');caption('你帮我找到“雨”字啦！快点开看看！','');}
+const weatherFiles={雪:'W01_snow',雷:'W02_thunder',霞:'W03_rosy_clouds',雾:'W04_fog'};
+const family=[{char:'雪',pinyin:'xuě',note:'雪：雪花从天空飘下来。',word:'下雪'},{char:'雷',pinyin:'léi',note:'雷：下雨时，有时会听到雷声。',word:'雷电'},{char:'霞',pinyin:'xiá',note:'霞：早晨或傍晚，天空中彩色的云。',word:'晚霞'},{char:'雾',pinyin:'wù',note:'雾：有雾的时候，远处常常看不清。',word:'大雾'}];
+function renderLearn(){
+ markProgress(1);show('lessonPanel');
+ const isRain=state.selectedChar==='雨';
+ const selected=isRain?{char:'雨',pinyin:'yǔ',word:'独体字'}:family.find(x=>x.char===state.selectedChar)||family[0];
+ state.selectedChar=selected.char;
+ const labels={雪:'雪花从天空飘下来。',雷:'下雨时，有时会听到雷声。',霞:'早晨或傍晚，天空中彩色的云。',雾:'有雾的时候，远处看不清。'};
+ const picker=[{char:'雨',pinyin:'yǔ'},...family];
+ $('lessonPanel').innerHTML=`<div class="focus-learning"><h2 class="learning-title">认识雨字头</h2><div class="focus-card"><div class="py">${selected.pinyin}</div><button id="readFocus" class="focus-glyph" aria-label="听${selected.char}的读音">${selected.char}</button><div class="focus-word">${selected.word}</div></div><div class="focus-scene">${isRain?'<div class="rain-explanation"><div class="explanation-copy"><h3>从“雨”到雨字头</h3><p>雨来到字的上面，<br>就变成了<span class="accent">雨字头</span>。</p></div><span class="radical-example" data-glyph="雪">雪</span><img class="learning-guide" src="assets/images/v3/C01_wukong_discover.png" alt=""></div>':`<img class="focus-weather" src="assets/images/v3/${weatherFiles[selected.char]}.png" alt="${selected.word}的插画"><p class="focus-meaning" id="familyNote">${labels[selected.char]}</p>`}</div><div class="word-picker" aria-label="切换汉字"><span class="picker-label">点一点，读一读</span>${picker.map(f=>`<button class="${f.char==='雨'?'read-rain ':''}${f.char===selected.char?'selected':''}" data-char="${f.char}" aria-label="认识${f.char}" aria-pressed="${f.char===selected.char}"><span class="py">${f.pinyin}</span><span class="char">${f.char}</span></button>`).join('')}</div></div>`;
+ $('readFocus').onclick=()=>sound(media.pronunciation[selected.char]);
+ $('lessonPanel').querySelectorAll('[data-char]').forEach(b=>b.onclick=()=>{const char=b.dataset.char;state.selectedChar=char;save();record('character-explored',{char});sound(media.pronunciation[char]);renderLearn();$('lessonPanel').querySelector('[data-char="'+char+'"]').focus({preventScroll:true});});
+ caption('','',[{id:'toTrace',text:'来写一写 →',run:()=>change('trace')}]);
+}
+function renderTrace(){markProgress(2);show('lessonPanel');const current=state.traceChar==='雪'?'雪':'雨';state.traceChar=current;const done=ch=>state.drawings[ch].length>0;$('lessonPanel').innerHTML=`<div class="write-layout"><h2 class="writing-title">动手描一描</h2><div class="word-tabs">${['雨','雪'].map(ch=>`<button class="word-tab ${ch===current?'current':''}" data-trace="${ch}" aria-label="描写${ch}" aria-pressed="${ch===current}"><span class="tab-char">${ch}</span><span class="tab-mark">${done(ch)?'已描写':'等你描写'}</span></button>`).join('')}</div><div><div class="write-board"><span class="frame-art" aria-hidden="true"></span><span class="guide-char">${current}</span><canvas id="writingCanvas" width="920" height="920" aria-label="${current}字描写区域"></canvas></div><div class="board-tools"><button id="undoStroke">撤销一笔</button><button id="clearWriting">擦掉重写</button></div></div><div class="write-instruction"><div class="panel-heading">今天练写</div><h2>${current} <span style="font-size:35px;color:#a35f32">${current==='雨'?'yǔ':'xuě'}</span></h2><p>跟着浅色的字，<br>慢慢描。</p><div class="writing-tips"><h3>描写小提示</h3><p>看清字在田字格的位置。<br>写完以后，请老师看一看。</p></div><div class="write-badge">${['雨','雪'].filter(done).length} / 2 个字已描写</div></div></div>`;
+ $('lessonPanel').querySelectorAll('[data-trace]').forEach(b=>b.onclick=()=>{state.traceChar=b.dataset.trace;save();renderTrace();sound(media.pronunciation[state.traceChar]);});$('undoStroke').onclick=()=>{state.drawings[current].pop();save();renderTrace();};$('clearWriting').onclick=()=>{state.drawings[current]=[];save();renderTrace();};
+ caption('一笔一画，把“雨”和“雪”描出来。','这里可以自由描写，写得怎么样请老师帮你看看。',[{text:'再看字卡',secondary:true,run:()=>change('learn')},{id:'toQuiz',text:'老师确认，去练习 →',disabled:!done('雨')||!done('雪'),run:()=>{record('teacher-confirmed-writing');change('quiz');}}]);
+ bindCanvas(current);
+}
+function bindCanvas(ch){const c=$('writingCanvas'),ctx=c.getContext('2d');ctx.lineWidth=19;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle='#b55638';
+ const paint=points=>{if(points.length<2)return;ctx.beginPath();ctx.moveTo(points[0][0],points[0][1]);for(const pt of points.slice(1))ctx.lineTo(pt[0],pt[1]);ctx.stroke();};state.drawings[ch].forEach(paint);
+ const point=e=>{const r=c.getBoundingClientRect();return [Math.max(0,Math.min(920,(e.clientX-r.left)/r.width*920)),Math.max(0,Math.min(920,(e.clientY-r.top)/r.height*920))];};
+ c.onpointerdown=e=>{if(stroke||e.button!==0)return;e.preventDefault();c.setPointerCapture(e.pointerId);stroke={id:e.pointerId,points:[point(e)]};};
+ c.onpointermove=e=>{if(!stroke||stroke.id!==e.pointerId)return;const pt=point(e),last=stroke.points.at(-1);if(Math.hypot(pt[0]-last[0],pt[1]-last[1])<2)return;paint([last,pt]);stroke.points.push(pt);};
+ const end=e=>{if(!stroke||stroke.id!==e.pointerId)return;const p=stroke.points;stroke=null;if(p.length>1){state.drawings[ch].push(p);record('trace-stroke',{char:ch,points:p.length});save();}renderTrace();};c.onpointerup=end;c.onpointercancel=end;
+}
+const questions=[
+ {id:'rain-radical',title:'哪个词语里，藏着“雨字头”的字？',hint:'看字的样子找线索，不只看词语的意思。',options:['雷电','降水','大风'],answer:0,success:'找到了！“雷”的上面有雨字头。',feedback:['','“降水”和下雨有关，但“降”和“水”都没有雨字头。再看看字形。','“大风”和天气有关，但“大”和“风”都没有雨字头。再看看字形。']},
+ {id:'rain-meaning',title:'雨字头的字，大多和什么有关？',hint:'想一想：雪、雷、霞、雾，它们有一个共同的秘密。',options:['降水、天气','心情、想法','金属、工具'],answer:0,success:'答对了！雨字头常常提示降水、天气现象。',feedback:['','心情、想法，常常能在心字底或竖心旁的字里找到。再想想雨字头。','金属、工具，常常能在金字旁的字里找到。再想想雪、雷、霞、雾。']}
+];
+function buildQuiz(){markProgress(3);show('lessonPanel');const q=questions[state.quizIndex],answered=state.answers[state.quizIndex];hero(answered?'celebrate':'normal',answered?'找到了，继续加油！':'仔细看看字的样子。');
+ $('lessonPanel').innerHTML=`<div class="quiz-wrap"><div class="quiz-top"><div><div class="panel-heading">${state.quizIndex?'第二道机关 · 想一想字义':'第一道机关 · 看一看字形'}</div><h2>${q.title}</h2></div><div class="quiz-step">${state.quizIndex+1} / ${questions.length}</div></div><div class="quiz-body"><div class="quiz-guide" aria-hidden="true"><img src="assets/images/v3/${answered?'C03_wukong_celebrate':'C02_wukong_encourage'}.png" alt=""><div class="quiz-guide-label">${answered?'线索亮起来了！':'和悟空一起解机关'}</div></div><div class="options">${q.options.map((option,i)=>`<button aria-label="${option}" class="option ${answered&&i===q.answer?'correct':''}" data-answer="${i}" ${answered?'disabled':''}><span class="stone-number" aria-hidden="true">${['一','二','三'][i]}</span><span class="option-text">${option.includes('、')?option.split('、').map((part,j)=>`${j?'<span class="word-comma">、</span>':''}<span class="word-break">${part}</span>`).join(''):option}</span></button>`).join('')}</div></div><div id="quizFeedback" class="quiz-feedback ${answered?'good':''}" role="status">${answered?q.success:''}</div></div>`;
+ $('lessonPanel').querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>answer(+b.dataset.answer,b));caption(answered?'线索越来越清楚了！':'帮悟空解开这一道汉字机关。',answered?q.success:'选一项试试；需要的时候，也可以回看字卡。',[{text:'回看字卡',secondary:true,run:()=>change('learn')},{id:'nextQuiz',text:state.quizIndex===0?'唤醒下一道机关 →':'把线索交给悟空 →',disabled:!answered,run:async()=>{if(pendingAdvance||director.busy||!state.answers[state.quizIndex])return;pendingAdvance=true;stopAudio();if(state.quizIndex<questions.length-1){await director.question(state.quizIndex+1,()=>{state.quizIndex++;save();renderQuiz();},()=>playQuizVoice());}else{director.exitToScene(()=>applyChange('outro'));}pendingAdvance=false;}}]);}
+function renderQuiz(){
+ const hadQuestion=!!$('lessonPanel').querySelector('.quiz-wrap'),oldIndex=$('lessonPanel').dataset.questionIndex;
+ buildQuiz();
+ $('lessonPanel').dataset.questionIndex=String(state.quizIndex);
+ director.decorateButton($('nextQuiz'),state.answers[state.quizIndex]);
+ if(!director.busy&&hadQuestion&&oldIndex!==String(state.quizIndex)){
+  animateIn($('lessonPanel').firstElementChild,[{opacity:0,transform:'translateX(25px)'},{opacity:1,transform:'none'}],{duration:450,easing:'ease-out'});
+  record('question-transition',{index:state.quizIndex});
+ }
+ const selected=$('lessonPanel').querySelector('.option.correct');
+ if(selected){const badge=document.createElement('span');badge.className='answer-badge';badge.textContent='✓';badge.setAttribute('aria-hidden','true');selected.append(badge);}
+}
+function celebrateAnswer(){
+ const option=$('lessonPanel').querySelector('.option.correct');
+ animateIn(option,[{transform:'scale(1)'},{transform:'translateY(-10px) scale(1.035)',offset:.4},{transform:'none'}],{duration:650,easing:'cubic-bezier(.2,.8,.2,1)'});
+ animateIn(option?.querySelector('.answer-badge'),[{transform:'scale(0) rotate(-35deg)'},{transform:'scale(1.18)',offset:.65},{transform:'scale(1)'}],{duration:500,easing:'ease-out'});
+ animateIn($('quizFeedback'),[{opacity:0,transform:'translateY(15px)'},{opacity:1,transform:'none'}],{duration:450,delay:120,fill:'backwards'});
+ burstAt(option,12);director.reward(option,$('nextQuiz'));record('answer-celebration');
+}
+function answer(i,button){if(director.busy)return;const qi=state.quizIndex,q=questions[qi];if(state.answers[qi])return;state.attempts[qi]++;record('quiz-answer',{id:q.id,option:q.options[i],correct:i===q.answer});if(i===q.answer){hero('celebrate','找到了，继续加油！');state.answers[qi]=true;save();playEffect('correct');sound(state.quizIndex===0?media.narrations.correct:media.narrations.family);renderQuiz();celebrateAnswer();}else{hero('encourage','没关系，再仔细看看。');button.classList.remove('wrong');void button.offsetWidth;button.classList.add('wrong');$('quizFeedback').className='quiz-feedback retry';$('quizFeedback').textContent=q.feedback[i];save();if(state.quizIndex===0)sound(media.narrations.retry);else sound(media.narrations.meaning);}}
+function renderOutro(){
+ show('outro');hide('caption');markProgress(4);outroStill=false;$('outro').classList.remove('still');
+ const v=$('outroVideo');v.muted=muted;v.src=media.outro;v.currentTime=0;
+ $('pauseOutro').textContent='暂停';updateOutro();
+ if(reducedMotion()){fallbackOutro();return;}
+ v.play().catch(()=>{$('pauseOutro').textContent='播放';});record('outro-start',{kind:'user-generated-video-wukong-voice'});
+}
+function fallbackOutro(){if(state.phase!=='outro')return;outroStill=true;$('outro').classList.add('still');$('outroVideo').pause();$('outroGlyph').style.opacity=0;updateClue(2);paintSpokenCue($('outroCaption'),currentDialogue('outro',.2));$('outroCaption').classList.remove('subtitle-empty');sound(media.narrations.complete,'outro');record('outro-still-fallback');}
+function updateOutro(){
+ const t=outroStill?voice.currentTime+.2:$('outroVideo').currentTime,cue=currentDialogue('outro',t);
+ updateClue(t);
+ paintSpokenCue($('outroCaption'),cue);$('outroCaption').classList.toggle('subtitle-empty',!cue);
+}
+function updateClue(t){
+ const badge=$('outroClue'),dock=$('clueDock');
+ if(outroStill){badge.style.transform='translate(1120px,270px)';badge.style.opacity=1;dock.style.opacity=0;return;}
+ const smooth=x=>{x=Math.max(0,Math.min(1,x));return x*x*(3-2*x);};
+ let x=1280,y=430,scale=1,opacity=smooth(t/.35);
+ if(t<1.1){const q=smooth(t/1.1);x=910+(1280-910)*q;y=590+(430-590)*q-100*Math.sin(q*Math.PI);scale=.35+.65*q;}
+ if(t>4.75){const q=smooth((t-4.75)/1.05);x=1280+(960-1280)*q;y=430+(130-430)*q-45*Math.sin(q*Math.PI);scale=1-.68*q;opacity=1-smooth((t-5.7)/.25);}
+ badge.style.transform='translate('+(x-160)+'px,'+(y-160)+'px) scale('+scale+')';
+ badge.style.opacity=opacity;dock.style.opacity=smooth((t-5.65)/.25);
+}
+function endOutro(){
+ if(state.phase!=='outro')return;let frame;
+ const v=$('outroVideo');
+ if(!reducedMotion()&&!outroStill&&v.readyState>=2){frame=document.createElement('canvas');frame.id='transitionFrame';frame.width=1920;frame.height=1080;frame.getContext('2d').drawImage(v,0,0,1920,1080);}
+ record('outro-completed');change('finish');
+ if(frame){$('stage').append(frame);frame.animate([{opacity:1},{opacity:0}],{duration:850,easing:'ease-in-out'}).finished.then(()=>frame.remove());}
+}
+$('outroVideo').ontimeupdate=updateOutro;$('outroVideo').onended=endOutro;$('outroVideo').onerror=fallbackOutro;
+$('outroVideo').onplay=()=>{$('pauseOutro').textContent='暂停';cancelAnimationFrame(outroTick);const sync=()=>{if(state.phase!=='outro'||outroStill)return;updateOutro();if(!$('outroVideo').paused)outroTick=requestAnimationFrame(sync);};sync();};$('outroVideo').onpause=()=>{$('pauseOutro').textContent='播放';};
+$('skipOutro').onclick=()=>{stopAudio();endOutro();};
+$('pauseOutro').onclick=()=>{if(outroStill){if(voice.paused){tryVoice();$('pauseOutro').textContent='暂停';}else{voice.pause();$('pauseOutro').textContent='播放';}}else{const v=$('outroVideo');if(v.paused)v.play().catch(fallbackOutro);else v.pause();}};
+voice.addEventListener('timeupdate',()=>{if(state.phase==='outro'&&outroStill)updateOutro();});
+voice.addEventListener('ended',()=>{if(state.phase==='outro'&&outroStill)endOutro();});
+
+function renderFinish(){playEffect('victory');markProgress(4);show('finishPanel');caption('本关完成！悟空离芭蕉扇又近了一步。','还记得吗？雨字头的字，多和降水、天气现象有关。',[{id:'replayGate',text:'再闯一次',secondary:true,run:restartGate},{id:'reviewWords',text:'再看汉字卡',run:()=>change('learn')}]);record('gate-finished',{attempts:state.attempts.slice()});}
+function restartGate(){stopAudio();state=blank();saved=null;change('cave');}
+function showNotes(){wasMovePlaying=moveInviteActive&&!$('moveInviteVideo').paused;$('moveInviteVideo').pause();$('missionVideo').pause();stopEffect();wasOutroPlaying=state.phase==='outro'&&!$('outroVideo').paused;$('outroVideo').pause();returnFocus=document.activeElement;wasIntroPlaying=isStoryVideo()&&!$('introVideo').paused;$('introVideo').pause();$('caveVideo').pause();wasVoicePlaying=!voice.paused;voice.pause();show('notes');$('mediaStatus').textContent=media.status||'正式媒体待接入';$('closeNotes').focus();}
+function closeNotes(){hide('notes');playMission();if(wasMovePlaying&&moveInviteActive)$('moveInviteVideo').play().catch(moveInviteFallback);if(wasOutroPlaying&&state.phase==='outro')$('outroVideo').play().catch(()=>{});if(wasIntroPlaying&&isStoryVideo()){$('introVideo').play().catch(()=>{});}playCave();if(wasVoicePlaying&&state.phase!=='intro')tryVoice();if(returnFocus?.isConnected)returnFocus.focus();}
+$('notesBtn').onclick=showNotes;$('closeNotes').onclick=closeNotes;
+$('restartBtn').onclick=()=>{hide('notes');stopAudio();state=blank();saved=null;change('intro');};$('restartGateBtn').onclick=()=>{hide('notes');restartGate();};
+$('notes').addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();closeNotes();return;}if(e.key==='Tab'){const buttons=[...$('notes').querySelectorAll('button')];const first=buttons[0],last=buttons.at(-1);if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault();}else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault();}}});
+$('startBtn').onclick=async()=>{
+ if(coverStartPending)return;coverStartPending=true;stopAudio();
+ try{
+  if(!coverEntranceAudible&&!muted&&!reducedMotion()){
+   const played=await startCoverEntrance(true);
+   if(played)await new Promise(resolve=>setTimeout(resolve,Math.max(0,1000-effect.currentTime*1000)));
+  }
+  state=blank();saved=null;change('intro');
+ }finally{coverStartPending=false;}
+};
+$('skipIntro').onclick=finishIntro;$('introVideo').onended=finishIntro;
+$('pauseIntro').onclick=()=>{const v=$('introVideo');if(v.paused)v.play().catch(()=>toast('视频暂时无法播放，可以直接进入洞口。'));else{v.pause();voice.pause();}};
+$('introVideo').onplay=()=>{$('pauseIntro').textContent='暂停';record('intro-play');if(isStoryVideo()){syncIntroVoice();syncIntroSubtitles();}};$('introVideo').onpause=()=>{$('pauseIntro').textContent='播放';if(isStoryVideo()&&!$('introVideo').ended)voice.pause();};
+$('introVideo').ontimeupdate=()=>{const v=$('introVideo');$('videoProgress').style.width=(Number.isFinite(v.duration)?Math.min(100,v.currentTime/v.duration*100):0)+'%';if(isStoryVideo()&&!v.error){updateIntroStory();syncIntroVoice();}};
+$('introVideo').onerror=()=>{$('introCaption').textContent='故事图片已保留，点“进入洞口”继续闯关。';$('pauseIntro').hidden=true;record('media-fallback',{media:'intro'});};
+$('caveVideo').onerror=()=>{$('caveVideo').hidden=true;record('media-fallback',{media:'cave'});};
+$('introVideo').poster=media.introPoster||'assets/images/A03_fire_mountain.png';if(media.intro)$('introVideo').src=media.intro;if(media.cave)$('caveVideo').src=media.cave;$('caveVideo').poster=media.cavePoster;document.querySelector('.backdrop').src=media.cavePoster;
+$('relic').onclick=()=>{change('learn');playEffect('open');};
+function dropReady(dx,dy){
+ const rock=$('rock'),zone=$('dropZone'),cx=rock.offsetLeft+rock.offsetWidth/2+dx,cy=rock.offsetTop+rock.offsetHeight/2+dy;
+ return cx>zone.offsetLeft-40&&cx<zone.offsetLeft+zone.offsetWidth+65&&cy>zone.offsetTop-40&&cy<zone.offsetTop+zone.offsetHeight+40;
+}
+$('rock').onpointerdown=e=>{if(state.phase!=='cave'||drag||e.button!==0)return;e.preventDefault();playTap('rock');$('rock').setPointerCapture(e.pointerId);drag={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0};$('rock').classList.add('dragging');hide('dragHint');record('drag-start');};
+$('rock').onpointermove=e=>{if(!drag||drag.id!==e.pointerId)return;drag.dx=(e.clientX-drag.x)/scale;drag.dy=(e.clientY-drag.y)/scale;drag.dx=Math.max(-650,Math.min(500,drag.dx));drag.dy=Math.max(-100,Math.min(220,drag.dy));$('rock').style.transform=`translate(${drag.dx}px,${drag.dy}px) rotate(${drag.dx/85}deg)`;const ready=dropReady(drag.dx,drag.dy);$('dropZone').classList.toggle('active',ready);$('dropLabel').textContent=ready?'松手放下':'放到这里';};
+function endDrag(e,cancel=false){if(!drag||drag.id!==e.pointerId)return;const d=drag;drag=null;$('rock').classList.remove('dragging');if(!cancel&&dropReady(d.dx,d.dy)){reveal('pointer-drag');}else{$('rock').style.transform='';$('dropZone').classList.remove('active');$('dropLabel').textContent='放到这里';show('dragHint');toast(cancel?'石头还在，重新按住它再试试。':'按住石头，向左边的光圈再拖远一点。');record('drag-returned',{cancel});}}
+$('rock').onpointerup=e=>endDrag(e);$('rock').onpointercancel=e=>endDrag(e,true);
+$('rock').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();playTap('rock-keyboard');reveal('keyboard');}};
+$('fullscreenBtn').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{toast('当前窗口不支持全屏，可以放大浏览器窗口。');}};
+document.addEventListener('fullscreenchange',()=>{$('fullscreenBtn').textContent=document.fullscreenElement?'退出全屏':'全屏';fit();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){if($('notes').hidden)wasMovePlaying=moveInviteActive&&!$('moveInviteVideo').paused;$('moveInviteVideo').pause();if(state.phase==='cover')$('wukong').classList.add('cover-settled');tapGeneration++;tapAudio.pause();$('missionVideo').pause();stopEffect();$('outroVideo').pause();$('introVideo').pause();$('caveVideo').pause();voice.pause();}else{playMission();playCave();if(wasMovePlaying&&moveInviteActive&&$('notes').hidden)$('moveInviteVideo').play().catch(moveInviteFallback);if(state.phase==='cover')playCoverVoice('visible');}});
+window.addEventListener('blur',()=>{if(drag){const id=drag.id;endDrag({pointerId:id},true);}});
+window.LESSON_DEBUG={get state(){return JSON.parse(JSON.stringify(state));},get events(){return log.slice();},questions,family,get tap(){return {paused:tapAudio.paused,muted:tapAudio.muted,currentTime:tapAudio.currentTime};},get effect(){return {src:effect.getAttribute('src'),paused:effect.paused,muted:effect.muted,currentTime:effect.currentTime};}};
+document.querySelector('.notes-controls').append($('soundBtn'),$('fullscreenBtn'));$('notesBtn').textContent='老师';
+record('lesson-opened',{mediaStatus:media.status});render();
+// Cover has no visual overlays. Autoplay is best-effort; a click always starts the story immediately.
+let coverPlayPending=false;
+function playCoverVoice(reason='open',restart=false){
+ if(state.phase!=='cover'||!media.coverAudio)return;
+ if(document.hidden){$('cover').dataset.audio='deferred';record('cover-autoplay-deferred',{reason});return;}
+ if(coverPlayPending)return;
+ if(voice.dataset.role!=='cover'){stopAudio();voice.src=media.coverAudio;voice.dataset.role='cover';voice.loop=false;voice.muted=muted;}
+ if(voice.ended&&!restart)return;
+ if(restart)voice.currentTime=0;
+ if(!voice.paused)return;
+ const generation=voiceGeneration;coverPlayPending=true;record('cover-autoplay-request',{reason});
+ voice.play().then(()=>{if(state.phase==='cover'&&generation===voiceGeneration){$('cover').dataset.audio='playing';record('cover-audible-start',{reason});}}).catch(e=>{if(state.phase!=='cover'||generation!==voiceGeneration)return;$('cover').dataset.audio=e.name==='NotAllowedError'?'blocked':'error';record(e.name==='NotAllowedError'?'cover-autoplay-blocked':'cover-audio-unavailable',{name:e.name,reason});}).finally(()=>coverPlayPending=false);
+}
+voice.addEventListener('ended',()=>{if(state.phase==='cover'&&voice.dataset.role==='cover')$('cover').dataset.audio='ended';});
+window.addEventListener('focus',()=>{if(state.phase==='cover')playCoverVoice('focus');});
+async function startCoverEntrance(fromGesture=false){
+ const hero=$('wukong');
+ if(reducedMotion()||document.hidden){hero.classList.add('cover-settled');record('cover-entrance-skipped');return;}
+ stopEffect();const generation=effectGeneration;
+ effect.src=media.sounds.coverEntrance;effect.muted=muted;effect.load();
+ if(!fromGesture){try{await hero.decode();}catch{}}
+ if(state.phase!=='cover'||document.hidden||generation!==effectGeneration)return;
+ record('effect-request',{name:'coverEntrance',file:effect.getAttribute('src')});
+ let audible=false;
+ try{await effect.play();audible=!effect.muted;}
+ catch(e){if(generation===effectGeneration)record(e.name==='NotAllowedError'?'cover-entrance-blocked':'cover-entrance-unavailable',{name:e.name});}
+ if(state.phase!=='cover'||document.hidden||generation!==effectGeneration)return;
+ hero.classList.remove('cover-arriving','cover-settled');void hero.offsetWidth;hero.classList.add('cover-arriving');
+ coverEntranceAudible=audible;record('cover-entrance-start',{audible,fromGesture,audioTime:effect.currentTime,duration:1});return audible;
+}
+startCoverEntrance();
+playCoverVoice('open');
+})();
+</script>
+<script src="buttons-v28.js?v=28"></script></body>
+</html>

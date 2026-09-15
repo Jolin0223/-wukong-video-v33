@@ -1,0 +1,31 @@
+
+/* Preserve the original end-cap proportions; only the center material stretches. */
+#stage button.aux-caps{
+ isolation:isolate;background:none!important;
+ border-radius:999px!important;box-shadow:none!important;
+ padding-left:30px;padding-right:30px;
+}
+#stage button.aux-caps .aux-material{
+ position:absolute;inset:0;display:flex;z-index:-1;
+ pointer-events:none;filter:drop-shadow(0 4px 3px #76592124);
+}
+#stage .aux-material>i{
+ display:block;height:100%;background-image:url('assets/images/v23/button-ivory.png');
+ background-repeat:no-repeat;background-size:auto 152%;background-position-y:54%;
+}
+#stage .aux-material>i:first-child{
+ flex:0 0 var(--aux-cap,36px);background-position-x:var(--aux-shift,-4px);
+}
+#stage .aux-material>i:nth-child(2){
+ flex:1;min-width:0;background-size:600% 152%;background-position-x:center;
+}
+#stage .aux-material>i:last-child{
+ flex:0 0 var(--aux-cap,36px);background-position-x:calc(100% - var(--aux-shift,-4px));
+}
+#stage[data-phase="finish"] .caption .aux-material{display:none!important}
+#stage #introSound,#stage #pauseIntro,#stage #outroSound,#stage #pauseOutro{
+ min-width:112px;
+}
+/* Close subpixel seams between slices and trim decorative pixels beyond the rim. */
+#stage .aux-material{border-radius:999px;overflow:hidden}
+#stage .aux-material>i:nth-child(2){margin-left:-1px;margin-right:-1px}

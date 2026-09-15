@@ -1,0 +1,19 @@
+/* Auxiliary buttons keep the original ivory/gold artwork; text is placed directly on it. */
+#stage button:where(.secondary,.small-btn,.mission-back,#undoStroke,#clearWriting){
+ --button-art:url('assets/images/v23/button-ivory.png');
+ background-color:transparent!important;
+ background-image:var(--button-art)!important;
+ background-size:104% 152%!important;
+ background-position:50% 54%!important;
+ background-repeat:no-repeat!important;
+ border:0!important;border-radius:12% / 34%!important;
+ color:#194f50!important;text-shadow:0 1px 0 #fff9e8!important;
+}
+#stage button:where(.secondary,.small-btn,.mission-back,#undoStroke,#clearWriting)::before,
+#stage button:where(.secondary,.small-btn,.mission-back,#undoStroke,#clearWriting)::after{
+ content:none!important;background:none!important;
+}
+/* The completion artwork already contains its own buttons. */
+#stage[data-phase="finish"] .caption button:where(.primary,.secondary){
+ background:none!important;color:transparent!important;text-shadow:none!important;
+}

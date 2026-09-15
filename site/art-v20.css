@@ -1,0 +1,20 @@
+/* V20: supplied transparent art, with live text and existing answer states. */
+.quiz-wrap .option::before{background-image:url('assets/images/v20/A01.png');background-size:114% 114%;background-position:center;inset:-5px -4px}
+.quiz-wrap .option .option-text{background:transparent;border:0;box-shadow:none;min-width:0;min-height:0;width:72%;padding:0 4px;top:-5px;font-size:71px}
+.quiz-wrap .option .word-break{font-size:53px;line-height:1.1}
+.quiz-wrap .option .stone-number{top:28px}
+.quiz-wrap .option.correct .option-text{background:#eaf5d96b;color:#286b4a;box-shadow:0 0 0 2px #8cb87b66;padding:5px 4px}
+.quiz-wrap .option.wrong .option-text{background:#fff0d780;box-shadow:0 0 0 2px #ddb17088;padding:5px 4px}
+.quiz-wrap .option.correct::before{filter:drop-shadow(0 0 18px #e4c875)}
+.learning-title,.writing-title{left:50%;right:auto;transform:translateX(-50%);width:540px;height:68px;top:-3px;display:grid;place-content:center;isolation:isolate;font-size:43px;letter-spacing:3px}
+.learning-title::before,.writing-title::before{content:'';position:absolute;z-index:-1;left:0;top:-80px;width:540px;height:230px;background:url('assets/images/v20/A03.png') center/contain no-repeat;pointer-events:none}
+#finishPanel::before{content:'';position:absolute;left:50%;top:-50px;transform:translateX(-50%);width:760px;height:324px;background:url('assets/images/v20/A02.png') center/contain no-repeat;pointer-events:none}
+#finishPanel .finish-title{position:absolute;top:39px;left:50%;transform:translateX(-50%);width:480px;height:79px;display:grid;place-content:center;padding:0;margin:0;background:none;border:0;box-shadow:none;border-radius:0;color:#95622b;font-size:67px;letter-spacing:8px}
+#finishPanel .finish-subtitle{position:absolute;top:176px;left:50%;transform:translateX(-50%);width:320px;display:block;text-align:center;padding:0;margin:0;background:none;border:0;font-size:26px;white-space:nowrap}
+#finishPanel .finish-summary{top:245px}
+#finishPanel .finish-summary h3{margin-bottom:18px;font-size:32px}
+#finishPanel .finish-words>div{height:174px}
+#finishPanel .finish-summary .finish-copy{margin-top:21px}
+#finishPanel .finish-next{margin-top:18px}
+#finishPanel .finish-companion{top:215px;height:422px}
+#finishPanel .finish-companion>img{height:420px}

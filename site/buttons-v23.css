@@ -1,0 +1,27 @@
+/* Original generated artwork supplies the material; HTML text stays readable. */
+#stage button:where(.primary,.secondary,.small-btn,.mission-back,#undoStroke,#clearWriting){
+ --button-art:url('assets/images/v23/button-ivory.png');
+ border:0!important;background-color:transparent!important;background-image:var(--button-art)!important;background-repeat:no-repeat!important;
+ background-size:103% 150%!important;background-position:50% 55%!important;
+ border-radius:9% / 28%!important;color:#194f4a!important;box-shadow:0 6px 7px #614c2426!important;
+ text-shadow:0 1px 0 #fff9e7;transition:filter .14s,translate .14s,box-shadow .14s!important;
+ isolation:isolate;
+}
+#stage button.primary{
+ --button-art:url('assets/images/v23/button-jade.png');background-size:103% 143%!important;background-position:50% 48%!important;
+ color:#fffdf0!important;text-shadow:0 2px 2px #075447;font-weight:700;
+}
+#stage button:where(.primary,.secondary,.small-btn,.mission-back,#undoStroke,#clearWriting):not(:disabled):hover{filter:brightness(1.055)}
+#stage button:where(.primary,.secondary,.small-btn,.mission-back,#undoStroke,#clearWriting):not(:disabled):active{translate:0 4px;filter:brightness(.95);box-shadow:0 1px 2px #614c2426!important}
+#stage button:where(.primary,.secondary,.small-btn,.mission-back,#undoStroke,#clearWriting):disabled{filter:saturate(.45);opacity:.48;box-shadow:none!important}
+#stage button:focus-visible{outline:4px solid #eac56b;outline-offset:5px}
+#stage .mission-back{padding:15px 24px;font-size:25px}
+#stage .mission-task{box-shadow:inset 0 3px 0 #fffbee,inset 0 -5px 0 #d9ae6d50,0 5px 0 #aa7b4330;border:2px solid #dcb572}
+#stage .mission-task[aria-pressed="true"]{box-shadow:inset 0 3px 0 #fffbee,inset 0 -5px 0 #d9ae6d50,0 0 0 2px #edc36d;background-color:#fff3ce}
+#stage .focus-tabs button,#stage .word-tab{box-shadow:inset 0 3px 0 #fffdf5,inset 0 -4px 0 #d4b77640,0 4px 0 #917c4226}
+#stage .focus-tabs button[aria-pressed="true"],#stage .word-tab.current{border-color:#c7a354;box-shadow:inset 0 3px 0 #fffdf5,inset 0 -4px 0 #d4b77640,0 4px 0 #bc963f50}
+/* Finish buttons are already baked into its full-resolution scene. */
+#stage[data-phase="finish"] .caption button:where(.primary,.secondary){background:none!important;box-shadow:none!important;color:transparent!important;text-shadow:none;border-radius:30px!important}
+#stage[data-phase="finish"] .caption button:where(.primary,.secondary):hover{box-shadow:0 0 0 4px #ffe6a980!important}
+#stage[data-phase="finish"] .caption button:where(.primary,.secondary):active{translate:none;box-shadow:inset 0 0 20px #ffffff50!important}
+@media(prefers-reduced-motion:reduce){#stage button{transition:none!important}}
