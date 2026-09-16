@@ -14,8 +14,8 @@
 #stage[data-phase="finish"] .caption{inset:0;width:1920px;height:1080px;pointer-events:none;z-index:14}
 #stage[data-phase="finish"] .caption .actions{position:absolute;inset:0;margin:0;pointer-events:none}
 #stage[data-phase="finish"] .caption button{position:absolute;top:943px;height:90px;min-height:0;border:0;border-radius:30px;background:transparent;box-shadow:none;color:transparent;padding:0;pointer-events:auto;font-size:0;animation:none}
-#stage[data-phase="finish"] #replayGate{left:640px;width:283px}
-#stage[data-phase="finish"] #reviewWords{left:963px;width:309px}
+#stage[data-phase="finish"] #reviewWords{left:640px;width:283px}
+#stage[data-phase="finish"] #replayGate{left:963px;width:309px}
 #stage[data-phase="finish"] .caption button:hover{box-shadow:0 0 0 4px #ffe6a980}
 #stage[data-phase="finish"] .caption button:focus-visible{outline:5px solid #d59d35;outline-offset:5px}
 @media(prefers-reduced-motion:no-preference){
