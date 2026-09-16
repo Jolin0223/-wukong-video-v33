@@ -1,0 +1,5 @@
+/* Start the leap on audible playback, or immediately on autoplay rejection. */
+#stage[data-phase="cover"] #wukong{animation:none;opacity:0}
+#stage[data-phase="cover"] #wukong.cover-arriving{opacity:1;animation:cover-leap-in 1s cubic-bezier(.18,.7,.2,1) both}
+#stage[data-phase="cover"] #wukong.cover-settled{opacity:1;animation:none}
+@media(prefers-reduced-motion:reduce){#stage[data-phase="cover"] #wukong{opacity:1;animation:none!important}}

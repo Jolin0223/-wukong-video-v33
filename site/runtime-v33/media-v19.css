@@ -1,0 +1,3 @@
+/* M01 is scenery; all lesson text and controls remain real HTML. */
+#missionPanel .mission-film{position:absolute;inset:0;width:1920px;height:1080px;object-fit:cover;pointer-events:none;z-index:0}
+#missionPanel .mission-heading,#missionPanel .mission-speech,#missionPanel .mission-tasks,#missionPanel .mission-bottom,#missionPanel .mission-back{z-index:1}

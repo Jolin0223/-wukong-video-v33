@@ -1,0 +1,26 @@
+/* V3.2: preserve the large learning surface behind the focused content. */
+#lessonPanel::before,
+#stage[data-phase="quiz"] #lessonPanel::before{
+  content:'';display:block;position:absolute;left:165px;right:380px;top:65px;bottom:45px;
+  z-index:-2;pointer-events:none;border-radius:64px;
+  background:#fffdf2;box-shadow:0 14px 35px #244e462b;
+}
+#lessonPanel::after{
+  content:'';position:absolute;left:110px;right:325px;top:-30px;bottom:-20px;
+  z-index:-1;pointer-events:none;border-radius:64px;
+  background:var(--scene-art-2,none) center/112% 115% no-repeat;
+}
+.focus-scene{top:65px}
+.focus-weather{
+  background:radial-gradient(ellipse at 50% 50%,#badde6 0%,#dcecf0 50%,#edf4f0 66%,transparent 74%);
+  border-radius:48px;
+}
+.focus-meaning{background:none;border:0;margin-top:15px;font-size:38px;color:#254f45}
+.rain-explanation{background:none;border:0}
+.picker-label{display:none}
+.word-picker{left:515px;top:679px}
+.quiz-wrap{padding:90px 410px 30px 225px}
+.quiz-top{background:none;border:0;padding:25px 0}
+.quiz-feedback{padding-left:0;padding-right:0}
+#finishPanel{background:#fffdf2;border:4px solid #d6dfbd;border-radius:48px;box-shadow:0 14px 35px #244e462b}
+.finish-copy,.finish-next{background:none}

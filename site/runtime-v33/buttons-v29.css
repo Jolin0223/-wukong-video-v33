@@ -1,0 +1,10 @@
+
+/* Fit the whole solid rim, leaving equal breathing room above and below.
+   V28's 152% / 54% crop placed the top gold edge outside the element. */
+#stage .aux-material{
+ border-radius:0;overflow:visible;clip-path:inset(0);
+}
+#stage .aux-material>i{
+ background-size:auto 145%;background-position-y:51.3%;
+}
+#stage .aux-material>i:nth-child(2){background-size:600% 145%}

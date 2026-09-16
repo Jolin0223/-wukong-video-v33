@@ -1,0 +1,13 @@
+/* One material + directly rendered text, matching the jade primary. */
+#stage button:where(.secondary,.small-btn,.mission-back,#undoStroke,#clearWriting){
+ --button-art:var(--scene-art-12,none);
+ background-color:transparent!important;background-image:var(--button-art)!important;
+ background-size:103% 143%!important;background-position:50% 48%!important;
+ color:#fffdf0!important;text-shadow:0 1px 2px #075447!important;border:0!important;
+ font-family:LessonRound,sans-serif;font-weight:600;
+}
+#stage button:where(.secondary,.small-btn,.mission-back,#undoStroke,#clearWriting)::before,
+#stage button:where(.secondary,.small-btn,.mission-back,#undoStroke,#clearWriting)::after{content:none!important;background:none!important}
+#stage[data-phase="finish"] .caption button:where(.primary,.secondary){background:none!important;color:transparent!important;text-shadow:none!important}
+/* Crop into the solid jade edge, including the shortest toolbar buttons. */
+#stage button:where(.secondary,.small-btn,.mission-back,#undoStroke,#clearWriting){background-size:105% 149%!important;background-position:50% 48%!important;border-radius:14% / 38%!important}
