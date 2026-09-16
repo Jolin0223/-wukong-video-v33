@@ -58,7 +58,7 @@
 #stage .voice-role{display:none}
 #stage[data-phase="quiz"] .quiz-body{margin-top:62px}
 #stage[data-phase="quiz"] .quiz-feedback{margin-top:20px;min-height:86px}
-</style><link rel="stylesheet" href="runtime-v33/layout-v18.css?v=33-buffer-1"><link rel="stylesheet" href="runtime-v33/media-v19.css?v=33-buffer-1"><link rel="stylesheet" href="runtime-v33/art-v20.css?v=33-buffer-1"><link rel="stylesheet" href="runtime-v33/finish-v21.css?v=33-buffer-1">
+</style><link rel="stylesheet" href="runtime-v33/layout-v18.css?v=33-buffer-1"><link rel="stylesheet" href="runtime-v33/media-v19.css?v=33-buffer-1"><link rel="stylesheet" href="runtime-v33/art-v20.css?v=33-buffer-1"><link rel="stylesheet" href="runtime-v33/finish-v21.css?v=34-finish-actions-2">
 <link rel="stylesheet" href="runtime-v33/buttons-v23.css?v=33-buffer-1">
 <link rel="stylesheet" href="runtime-v33/cover-v24.css?v=33-buffer-1">
 <link rel="stylesheet" href="runtime-v33/cover-v25.css?v=33-buffer-1">
@@ -413,7 +413,8 @@ $('pauseOutro').onclick=()=>{if(window.LESSON_LOADER.cancel($('outroVideo'))){$(
 voice.addEventListener('timeupdate',()=>{if(state.phase==='outro'&&outroStill)updateOutro();});
 voice.addEventListener('ended',()=>{if(state.phase==='outro'&&outroStill)endOutro();});
 
-function renderFinish(){playEffect('victory');markProgress(4);show('finishPanel');caption('本关完成！悟空离芭蕉扇又近了一步。','还记得吗？雨字头的字，多和降水、天气现象有关。',[{id:'replayGate',text:'再闯一次',secondary:true,run:restartGate},{id:'reviewWords',text:'再看汉字',run:()=>change('learn')}]);record('gate-finished',{attempts:state.attempts.slice()});}
+function renderFinish(){playEffect('victory');markProgress(4);show('finishPanel');caption('本关完成！悟空离芭蕉扇又近了一步。','还记得吗？雨字头的字，多和降水、天气现象有关。',[{id:'replayGate',text:'再闯一次',secondary:true,run:restartFromCover},{id:'reviewWords',text:'再看汉字',run:()=>change('learn')}]);record('gate-finished',{attempts:state.attempts.slice()});}
+function restartFromCover(){stopAudio();state=blank();saved=null;change('cover');}
 function restartGate(){stopAudio();state=blank();saved=null;change('cave');}
 function showNotes(){wasMovePlaying=moveInviteActive&&(!$('moveInviteVideo').paused||window.LESSON_LOADER.isWaiting($('moveInviteVideo')));$('moveInviteVideo').pause();$('missionVideo').pause();stopEffect();wasOutroPlaying=state.phase==='outro'&&(!$('outroVideo').paused||window.LESSON_LOADER.isWaiting($('outroVideo')));$('outroVideo').pause();returnFocus=document.activeElement;wasIntroPlaying=isStoryVideo()&&(!$('introVideo').paused||window.LESSON_LOADER.isWaiting($('introVideo')));$('introVideo').pause();$('caveVideo').pause();wasVoicePlaying=!voice.paused;voice.pause();show('notes');$('mediaStatus').textContent=media.status||'正式媒体待接入';$('closeNotes').focus();}
 function closeNotes(){hide('notes');playMission();if(wasMovePlaying&&moveInviteActive)window.LESSON_LOADER.play($('moveInviteVideo')).catch(moveInviteFallback);if(wasOutroPlaying&&state.phase==='outro')window.LESSON_LOADER.play($('outroVideo')).catch(()=>{});if(wasIntroPlaying&&isStoryVideo()){window.LESSON_LOADER.play($('introVideo')).catch(()=>{});}playCave();if(wasVoicePlaying&&state.phase!=='intro')tryVoice();if(returnFocus?.isConnected)returnFocus.focus();}
