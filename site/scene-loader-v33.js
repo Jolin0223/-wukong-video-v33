@@ -25,7 +25,7 @@
       }
     });
     for(const asset of window.LESSON_SCENE_ART || []) {
-      if(asset.groups.some(group => active.includes(group))) stage.style.setProperty(asset.variable, `url("${asset.url}")`);
+      if(asset.groups.some(group => active.includes(group))) stage.style.setProperty(asset.variable, `url("${new URL(asset.url,document.baseURI).href}")`);
     }
   }
   const fullyBuffered = video => Number.isFinite(video.duration) && video.duration > 0 &&
